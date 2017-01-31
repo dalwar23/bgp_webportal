@@ -1,0 +1,111 @@
+@charset "utf-8";
+/**
+ * @author dalwar hossain
+ * @copyright 2017
+ * @email dalwar014@gmail.com
+ * @date 30.01.2017 23:38
+ */
+
+/*------------------- CSS RESETS START -------*/
+body, p, h1, h2, h3, h4, h5, h6, form, fieldset {
+     margin: 0px;
+     padding: 0px;
+}
+
+body {
+     padding: 0px;
+     margin: 0px;
+     font-family: ubuntu, Georgia, "Times New Roman", Times, serif;
+     font-size: 12px;
+     text-align: left;
+     line-height: 1.6em;
+}
+/*------------------- CSS RESETS ENDS ------*/
+/* ------------------------------------------
+Wrapper
+-------------------------------------------*/
+#wrapper{
+  height: auto;
+  width: 90%;
+  margin: 0 auto;
+  background-color: yellow;
+  text-align: center;
+}
+/* ------------------------------------------
+Header
+-------------------------------------------*/
+#header{
+  width: auto;
+  height: 100px;
+  margin: 0%;
+  padding-top: 50px;
+  background-color: #FF0000;
+  line-height: normal;
+}
+#header h4 a{
+  text-decoration: underline;
+  color: inherit;
+}
+/* ------------------------------------------
+Main Content
+-------------------------------------------*/
+#main-content{
+  width: auto;
+  height: auto;
+  background-color: #00FF00;
+  padding: 10px 20px;
+}
+#main-content .intro{
+  text-align: justify;
+  padding-bottom: 10px;
+}
+#main-content .hclass{
+  text-decoration: underline;
+  text-decoration-color: red;
+  text-decoration-style: double;
+}
+#main-content #data{
+  width: 100%;
+  height: auto;
+  background-color: green;
+}
+#main-content #data .historical{
+  float: left;
+  height: auto;
+  width: 47%;
+  background-color: #374576;
+  padding: 10px;
+}
+#main-content #data .current{
+  float: right;
+  height: auto;
+  width: 47%;
+  padding: 10px;
+  background-color: #678439;
+}
+#main-content #data .business{
+  float: left;
+  height: auto;
+  width: 47%;
+  padding: 10px;
+  margin-top: 10px;
+  background-color: #435628;
+}
+.clear{clear:both}
+/* ------------------------------------------
+Footer
+-------------------------------------------*/
+#footer{
+  height: auto;
+  width: auto;
+  text-align: center;
+  padding: 10px 0;
+  background-color: #0000FF;
+}
+#footer a{
+  text-decoration:underline;
+  color:inherit;
+}
+#footer a:hover{
+  color: #763548;
+}
