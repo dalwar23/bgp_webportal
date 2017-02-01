@@ -27,6 +27,9 @@
             our best to fix the bugs. Please feel free to contact us <a href="">here</a> if you find any bugs.<br/>
             <strong class="hclass">N.B:</strong> Data from 2006 to 2016 can be found under <span class='hclass'>historical data.</span>
           </p>
+          <div class='recent-data'>
+            <canvas id="mycanvas"></canvas>
+          </p>
           <div id="data">
             <div class="historical">
               <p>This is a div for historical data</p>
@@ -44,5 +47,9 @@
           <?php include_once('includes/__footer.php');?>
         </div>
     </div>
+    <!-- javascript -->
+		<script type="text/javascript" src="js/jquery.min.js"></script>
+		<script type="text/javascript" src="js/Chart.min.js"></script>
+		<script type="text/javascript" src="js/lineGraph.js"></script>
   </body>
 </html>

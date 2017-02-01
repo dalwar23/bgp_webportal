@@ -64,6 +64,10 @@ Main Content
   text-decoration-color: red;
   text-decoration-style: double;
 }
+#main-content .recent-data{
+  width:inherit;
+  height:100px;
+}
 #main-content #data{
   width: 100%;
   height: auto;
