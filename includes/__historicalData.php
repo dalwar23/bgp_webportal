@@ -12,7 +12,7 @@ header('Content-Type: application/json');
 include('__dbConnection.php');
 
 //query to get data from the table
-$sql = "SELECT * FROM t_historical_s1 WHERE time_stamp >= DATE(NOW())- INTERVAL 20 DAY";
+$sql = "SELECT * FROM t_historical_s1 WHERE time_stamp < '2017-01-01' ORDER BY time_stamp ASC";
 
 //execute query
 $result = $connection->query($sql);

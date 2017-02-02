@@ -25,20 +25,17 @@
             It visualizes data in form of graphs and user can make queries depending on the need. Please remember that it is an ongoing
             project and this project results might have some bugs. Please take into considaration that we are trying
             our best to fix the bugs. Please feel free to contact us <a href="">here</a> if you find any bugs.<br/>
-            <strong class="hclass">N.B:</strong> Data from 2006 to 2016 can be found under <span class='hclass'>historical data.</span>
           </p>
-          <div class='recent-data'>
-            <canvas id="mycanvas"></canvas>
-          </p>
-          <div id="data">
+          <div id="prefix-data">
             <div class="historical">
-              <p>This is a div for historical data</p>
+              <h2>Historical Data</h2>
+              <h5>(Click on the color legends for filter)</h5>
+              <canvas id="mycanvas-historical"></canvas>
             </div>
             <div class="current">
-              <p>this is a div for current data</p>
-            </div>
-            <div class="business">
-              <p> this is a div for business relation data</p>
+              <h2>Current Data</h2>
+              <h5>(Click on the color legends for filter)</h5>
+              <canvas id="mycanvas-current"></canvas>
             </div>
           </div>
           <div class="clear"></div>
@@ -50,6 +47,7 @@
     <!-- javascript -->
 		<script type="text/javascript" src="js/jquery.min.js"></script>
 		<script type="text/javascript" src="js/Chart.min.js"></script>
-		<script type="text/javascript" src="js/lineGraph.js"></script>
+		<script type="text/javascript" src="js/historicalLineGraph.js"></script>
+    <script type="text/javascript" src="js/currentLineGraph.js"></script>
   </body>
 </html>
