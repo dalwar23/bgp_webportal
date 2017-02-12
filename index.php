@@ -37,6 +37,14 @@
               <h5>(Click on the color legends for filter)</h5>
               <canvas id="mycanvas-current"></canvas>
             </div>
+            <div class="historical">
+              <h2>Top 20 Delegatee AS</h2>
+              <?php include('includes/__delegatee.php');?>
+            </div>
+            <div class="current">
+              <h2>Top 20 Delegator AS</h2>
+              <?php include('includes/__delegator.php');?>
+            </div>            
           </div>
           <div class="clear"></div>
         </div>
