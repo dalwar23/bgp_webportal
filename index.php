@@ -28,23 +28,35 @@
           </p>
           <div id="prefix-data">
             <div class="historical">
-              <h2>Historical Data</h2>
+              <h2>BGP Data Stream</h2>
               <h5>(Click on the color legends for filter)</h5>
               <canvas id="mycanvas-historical"></canvas>
             </div>
             <div class="current">
-              <h2>Current Data</h2>
+              <h2>Recent Data (Last 30 Days)</h2>
               <h5>(Click on the color legends for filter)</h5>
               <canvas id="mycanvas-current"></canvas>
             </div>
             <div class="historical">
-              <h2>Top 20 Delegatee AS</h2>
-              <?php include('includes/__delegatee.php');?>
+              <h2>AS Query</h2>
+              <br/>
+              <?php include('includes/__searchAS.php');?>
             </div>
             <div class="current">
+              <h2>Prefix Query</h2>
+              <br/>
+              <?php include('includes/__searchPrefix.php');?>
+            </div>             
+            <div class="historical">
               <h2>Top 20 Delegator AS</h2>
+              <br/>
               <?php include('includes/__delegator.php');?>
-            </div>            
+            </div>
+            <div class="current">
+              <h2>Top 20 Delegatee AS</h2>
+              <br/>
+              <?php include('includes/__delegatee.php');?>
+            </div>                                 
           </div>
           <div class="clear"></div>
         </div>
