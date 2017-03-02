@@ -59,9 +59,16 @@ Main Content
   text-align: justify;
   padding-bottom: 10px;
 }
+
 #main-content #prefix-data{
   width: 100%;
   height: auto;
+  /*background-color: green;*/
+}
+#main-content #prefix-data #as{
+  width: 100%;
+  height: auto;
+  text-align: left;
   /*background-color: green;*/
 }
 #main-content #prefix-data .historical{
@@ -76,18 +83,43 @@ Main Content
   width: 47%;
   padding: 10px;
 }
-#main-content #business-data .business{
+#main-content #prefix-data .asinfo{
   float: left;
   height: auto;
   width: 47%;
   padding: 10px;
-  margin-top: 10px;
-  background-color: #435628;
+  text-align: left;
+}
+#main-content #prefix-data .business{
+  float: right;
+  height: auto;
+  width: 47%;
+  padding: 10px;
+  text-align: left;
 }
 #main-content #prefix-data .theader{
   text-transform: uppercase;
   font-size: 110%;
   font-weight: bold;
+}
+#main-content #prefix-data .talign{
+  text-align: center;
+}
+#main-content #prefix-data .asinfo .highlight{
+}
+#main-content #prefix-data .header-highlight{
+  color: #A55959;
+}
+.flatButton{
+  padding: 6px;
+  border: 1px solid #98B5E2;
+  background-color: #CAD9F0;
+  color: #333333;
+  font-weight: normal;
+  cursor: pointer;  
+}
+.flatButton:hover{
+  background-color: #98B5E2;
 }
 .clear{clear:both}
 /* ------------------------------------------

@@ -37,6 +37,8 @@
               <h5>(Click on the color legends for filter)</h5>
               <canvas id="mycanvas-current"></canvas>
             </div>
+            <div class="clear"></div>
+            <!-- ****************************************** -->
             <div class="historical">
               <h2>AS Query</h2>
               <br/>
@@ -46,7 +48,9 @@
               <h2>Prefix Query</h2>
               <br/>
               <?php include('includes/__searchPrefix.php');?>
-            </div>             
+            </div> 
+            <div class="clear"></div>
+            <!-- ******************************************** -->
             <div class="historical">
               <h2>Top 20 Delegator AS</h2>
               <br/>
@@ -56,7 +60,8 @@
               <h2>Top 20 Delegatee AS</h2>
               <br/>
               <?php include('includes/__delegatee.php');?>
-            </div>                                 
+            </div> 
+            <!-- ******************************************** -->                               
           </div>
           <div class="clear"></div>
         </div>

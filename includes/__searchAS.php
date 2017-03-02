@@ -15,12 +15,12 @@
 	</head>
 	<body>
 		<div class="asquery">
-			<form name="asQueryForm" method="POST" action="dataProcess.php">
-				<table align="center" border="0" width="100%">
+			<form name="asQueryForm" method="POST" action="dataProcessor.php">
+				<table align="center" border="0" width="100%">	
 					<tr>
 						<td align="right" width="50%">Please enter an autonomous system (AS) number (e.g. 35487):</td>
 						<td align="center"><input type="number" name="asNumber" minlength="1" required="required" autocomplete="on" autofocus class="txtBox"></td>
-						<td align="right"><input type="submit" name="asQuerySubmit" value="Find AS" class="flatButton"></td>
+						<td align="right"><input type="submit" name="asQuerySubmit" value="Find AS & Delegation Info" class="flatButton"></td>
 					</tr>
 				</table>
 			</form>

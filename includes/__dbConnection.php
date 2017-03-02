@@ -12,7 +12,7 @@ $password = "inetnpa";
 $db_name = "bgp_data";
 
 //connection to database
-$connection = new mysqli($host, $username, $password, $db_name);
-if($connection->connect_error){
-	die("Database connection failed!".$connection->connect_error);
+$connection = mysqli_connect($host, $username, $password, $db_name);
+if (!$connection) {
+    die("Connection failed: " . mysqli_connect_error());
 }

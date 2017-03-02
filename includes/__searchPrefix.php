@@ -15,7 +15,7 @@
 	</head>
 	<body>
 		<div class="prefixquery">
-			<form name="prefixQueryForm" method="POST" action="dataProcess.php">
+			<form name="prefixQueryForm" method="POST" action="dataProcessor.php">
 				<table align="center" border="0" width="100%">
 					<tr>
 						<td align="right" width="50%">Please enter a prefix number (e.g. 1.2.3.4/8):</td>
