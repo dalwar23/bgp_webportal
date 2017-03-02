@@ -45,6 +45,22 @@ function get_business_rel_query($asNumber){
 }
 ?>
 <?php
+function get_prefix_query($prefix){
+	$prefixQuery = "
+	SELECT
+	t_delegation_s1.time_stamp	AS dates,
+	t_delegation_s1.prefix_more	AS prefix_more,
+	t_delegation_s1.pm_usable_addresses	AS pm_usable_addresses,
+	t_delegation_s1.delegatee	AS delegatee
+	FROM t_delegation_s1
+	WHERE
+	t_delegation_s1.prefix_more ='{$prefix}';
+	";
+	
+	return $prefixQuery;
+}
+?>
+<?php
 	//flush the output buffer
 	ob_flush();
 ?>

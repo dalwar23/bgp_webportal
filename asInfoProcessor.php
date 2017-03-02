@@ -94,19 +94,14 @@
 <?php
                     echo "</table>";
                     echo "<span class='highlight'> Total number of result found: <strong>{$numRows}</strong><br>
-                    Now showing first 20 rows. Please <strong>click export button</strong> to get the full data into a (.csv) file.<br>
+                    This is a <strong>partial view</strong> of the actual result. Please <strong>click export button</strong> to get the full data into a (.csv) file.<br>
                     Time for creating of CSV file varies with the size of the result.</span>";
+                    echo "</div>";
                     //mysqli_close($connection);
                   }
                   else{
                     echo "<strong>Requested AS number is not found. Please try with a valid AS number.</strong>";
                   }
-            		}
-            		else{
-            			// Show error message
-      						echo "<tr><td>Server could not understand the request. Please try again!";
-      						echo "<br/><br/><a href='index.php'>Back</a><tr><td>";
-            		}
             	?>
             	</div>
               <div class="business">
@@ -116,23 +111,19 @@
                     echo"
                       <table align='center' border='1px solid black' width='100%' class='talign'>
                       <tr class='theader'>
-                          <td>AS - 1</td>
-                          <td>AS - 2</td>
+                          <td>AS-1</td>
+                          <td>AS-2</td>
                           <td>Relationship</td>
                       </tr>
                     ";
                   $bCounter = 0;
                   while($bRow = mysqli_fetch_assoc($bResult)){
                     if($bCounter < 20){
-                      if($bRow[as_rel] == 0){$as_rel = p2p;}
-                      elseif($bRow[as_rel] == 1){$as_rel = p2c;}
-                      elseif($bRow[as_rel] == 'X' or $row[as_rel] == 'x'){$as_rel = 'No AS relationship';}
-                      else{$as_rel='Undefined';}
                       echo "
                         <tr>
                           <td>$bRow[as_1]</td>
                           <td>$bRow[as_2]</td>
-                          <td>{$as_rel}</td>
+                          <td>$bRow[as_rel_type]</td>
                         </tr>
                       ";
                     }
@@ -149,12 +140,18 @@
               <?php
                     echo "</table>";
                     echo "<span class='highlight'> Total number of result found: <strong>{$bNumRows}</strong><br>
-                    Now showing first 20 rows. Please <strong>click export button</strong> to get the full data into a (.csv) file.<br>
+                    This is a <strong>partial view</strong> of the actual result. Please <strong>click export button</strong> to get the full data into a (.csv) file.<br>
                     Time for creating of CSV file varies with the size of the result.</span>";
                   }
                   else{
                     echo "<strong>Requested AS number is not found. Please try with a valid AS number.</strong>";
                   }
+              }
+              else{
+                 // Show error message
+                 echo "<tr><td>Server could not understand the request. Please try again!";
+                 echo "<br/><br/><a href='index.php'>Back</a><tr><td>";
+              }
               ?>
               </div>
             </div>

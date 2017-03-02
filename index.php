@@ -24,7 +24,7 @@
             project. This websites provieds IPv4 prefix delegation data in a very easy to understand and human readable format.
             It visualizes data in form of graphs and user can make queries depending on the need. Please remember that it is an ongoing
             project and this project results might have some bugs. Please take into considaration that we are trying
-            our best to fix the bugs. Please feel free to contact us <a href="">here</a> if you find any bugs.<br/>
+            our best to fix the bugs. Please feel free to contact us <a href="mailto:shihab.karim@campus.tu-berlin.de">here</a> if you find any bugs.<br/>
           </p>
           <div id="prefix-data">
             <div class="historical">

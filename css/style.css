@@ -90,24 +90,29 @@ Main Content
   padding: 10px;
   text-align: left;
 }
-#main-content #prefix-data .business{
+#main-content #prefix-data .prefix-info{
+  float: left;
+  height: auto;
+  width: 47%;
+  padding: 10px;
+  text-align: left;
+}
+#main-content .business{
   float: right;
   height: auto;
   width: 47%;
   padding: 10px;
   text-align: left;
 }
-#main-content #prefix-data .theader{
+#main-content .theader{
   text-transform: uppercase;
   font-size: 110%;
   font-weight: bold;
 }
-#main-content #prefix-data .talign{
+#main-content .talign{
   text-align: center;
 }
-#main-content #prefix-data .asinfo .highlight{
-}
-#main-content #prefix-data .header-highlight{
+#main-content .header-highlight{
   color: #A55959;
 }
 .flatButton{
@@ -120,6 +125,17 @@ Main Content
 }
 .flatButton:hover{
   background-color: #98B5E2;
+}
+.txtBox{
+    padding: 3px;
+    border: 1px solid #DDDDDD;
+    background-color:#E8F2FE; 
+}
+.txtBox:hover{
+  border: 1px solid #336699;
+}
+.txtBox:focus{
+  border: 1px solid #336699;
 }
 .clear{clear:both}
 /* ------------------------------------------
