@@ -50,7 +50,7 @@ function get_prefix_query($prefix){
 	SELECT
 	t_delegation_s1.time_stamp	AS dates,
 	t_delegation_s1.prefix_more	AS prefix_more,
-	t_delegation_s1.pm_usable_addresses	AS pm_usable_addresses,
+	t_delegation_s1.delegator	AS delegator,
 	t_delegation_s1.delegatee	AS delegatee
 	FROM t_delegation_s1
 	WHERE

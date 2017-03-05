@@ -50,7 +50,7 @@
                       <tr class='theader'>
                           <td>Timestamp</td>
                           <td>Prefix</td>
-                          <td>Usable host addresses</td>
+                          <td>Delegator</td>
                           <td>Delegatee</td>
                       </tr>
                   ";
@@ -61,7 +61,7 @@
                         <tr>
                           <td>$row[dates]</td>
                           <td>$row[prefix_more]</td>
-                          <td>$row[pm_usable_addresses]</td>
+                          <td>$row[delegator]</td>
                           <td>$row[delegatee]</td>
                         </tr>
                       ";
