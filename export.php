@@ -1,5 +1,11 @@
 
-<?php 
+<?php
+	/**
+	* @author Md Dalwar Hossain Arif
+	* @copyright 2017
+	* @email dalwar014@gmail.com
+	* @website http://www.user.tu-berlin.de/hossainarif
+	*/
 	//Start the output buffer
 	ob_start();
 ?>
@@ -22,11 +28,12 @@
 
 	    $filename = $fileName.".csv";
     	$result = mysqli_query($connection,$query);
-    	
+    	set_time_limit(0);
 		header("Content-Disposition: attachment; filename=\"$filename\"");
 		header("Content-Type: application/csv");
 		$flag = false;
 		while ($row = mysqli_fetch_assoc($result)) {
+			set_time_limit(0);
 		    if (!$flag) {
 		        // display field/column names as first row
 		        echo implode("\t", array_keys($row)) . "\r\n";

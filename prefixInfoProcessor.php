@@ -36,12 +36,16 @@
         <div id="main-content">
         	<div id="prefix-data">
             	<?php
-            		if(isset($_POST['prefixQuerySubmit'])){
-            			$prefix = $_POST['prefix'];
+                if(isset($_GET['prefix'])){
+                  $prefix = $_GET['prefix'];
+                }
+                elseif(isset($_POST['prefixQuerySubmit'])){
+                  $prefix = $_POST['prefix'];
+                }
+            		if($prefix){
             			$query = get_prefix_query($prefix);
                   $result = mysqli_query($connection,$query);
                   $numRows = mysqli_num_rows($result);
-                  
                   if ($numRows > 0) {
                     echo"
                     <div class='prefix-info'>
@@ -56,13 +60,14 @@
                   ";
                   $counter = 0;
                   while($row = mysqli_fetch_assoc($result)){
-                    if($counter < 20){
+                    set_time_limit(0);
+                    if($counter < 50){
                       echo "
                         <tr>
                           <td>$row[dates]</td>
                           <td>$row[prefix_more]</td>
-                          <td>$row[delegator]</td>
-                          <td>$row[delegatee]</td>
+                          <td><a href='asInfoProcessor.php?asNumber={$row[delegator]}'>$row[delegator]</a></td>
+                          <td><a href='asInfoProcessor.php?asNumber={$row[delegatee]}'>$row[delegatee]</a></td>
                         </tr>
                       ";
                     }

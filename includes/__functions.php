@@ -13,24 +13,31 @@
 function get_as_query($asNumber){
 	$asQuery = "
 	SELECT
-	t_delegation_s1.time_stamp AS dates,
 	t_meta_data_s1.as_num AS as_num,
 	t_meta_data_s1.conesize AS conesize,
 	t_meta_data_s1.country_code AS country_code,
 	t_meta_data_s1.rir AS rir,
-	t_meta_data_s1.as_name 	AS as_name,
+	t_meta_data_s1.as_name 	AS as_name
+	FROM t_meta_data_s1
+	WHERE t_meta_data_s1.as_num ='{$asNumber}'
+	";
+	return $asQuery;
+}
+?>
+<?php
+function get_delegation_query($asNumber){
+	$dQuery = "
+	SELECT
+	t_delegation_s1.time_stamp AS dates,
 	t_delegation_s1.prefix_less AS prefix_less,
 	t_delegation_s1.prefix_more AS prefix_more,
 	t_delegation_s1.delegator AS delegator,
 	t_delegation_s1.delegatee AS delegatee
-	FROM t_meta_data_s1
-	JOIN t_delegation_s1
-	ON
-	t_delegation_s1.delegatee=t_meta_data_s1.as_num OR t_delegation_s1.delegator=t_meta_data_s1.as_num
+	FROM t_delegation_s1
 	WHERE
-	t_meta_data_s1.as_num = '{$asNumber}' AND t_delegation_s1.time_stamp >='2017-01-01'";
+	t_delegation_s1.delegatee='{$asNumber}' OR t_delegation_s1.delegator='{$asNumber}' ORDER BY dates DESC";
 
-	return $asQuery;
+	return $dQuery;
 }
 ?>
 <?php
@@ -39,7 +46,7 @@ function get_business_rel_query($asNumber){
 	SELECT *
 	FROM t_business_rel_s1
 	WHERE 
-	t_business_rel_s1.as_1 = '{$asNumber}' OR t_business_rel_s1.as_2 = '{$asNumber}'";
+	t_business_rel_s1.as_1 = '{$asNumber}' OR t_business_rel_s1.as_2 = '{$asNumber}';";
 
 	return $business_rel_query;
 }
@@ -58,6 +65,19 @@ function get_prefix_query($prefix){
 	";
 	
 	return $prefixQuery;
+}
+?>
+<?php 
+function get_business_relation_query($delegator, $delegatee){
+	$rQuery = "
+	SELECT
+	t_business_rel_s1.as_rel_type	AS as_rel_type
+	FROM t_business_rel_s1
+	WHERE
+	as_1 = '{$delegator}' AND as_2 = '{$delegatee}'
+	";
+
+	return $rQuery;
 }
 ?>
 <?php

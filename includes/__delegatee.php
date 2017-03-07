@@ -46,7 +46,7 @@ if ($result->num_rows > 0) {
     while($row = $result->fetch_assoc()) {
     	echo "
     		<tr>
-    			<td>$row[delegatee]</td>
+    			<td><a href='asInfoProcessor.php?asNumber={$row[delegatee]}'>$row[delegatee]</a></td>
     			<td>$row[country_code]</td>
     			<td>$row[rir]</td>
     			<td>$row[as_name]</td>

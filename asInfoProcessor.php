@@ -36,18 +36,31 @@
         <div id="main-content">
         	<div id="prefix-data">
             	<?php
-            		if(isset($_POST['asQuerySubmit'])){
-            			$asNumber = $_POST['asNumber'];
+                if (isset($_GET['asNumber'])){
+                  $asNumber = $_GET['asNumber'];
+                }
+                elseif(isset($_POST['asQuerySubmit']))
+                {
+                  $asNumber = $_POST['asNumber'];
+                }
+            		if($asNumber){
             			$query = get_as_query($asNumber);
                   $result = mysqli_query($connection,$query);
                   $numRows = mysqli_num_rows($result);
+                  //----------------------------------------
+                  $dQuery = get_delegation_query($asNumber);
+                  $dResult = mysqli_query($connection,$dQuery);
+                  $dNumRows = mysqli_num_rows($dResult);
+                  //----------------------------------------
                   $business_rel_query = get_business_rel_query($asNumber);
                   $bResult = mysqli_query($connection,$business_rel_query);
                   $bNumRows = mysqli_num_rows($bResult);
+                  //----------------------------------------
                   echo "
                   <div id='as'>
                   <h2 class='header-highlight'>AS Info</h2><br>";
                   if ($numRows > 0) {
+                    set_time_limit(0);
                     $as_info = mysqli_fetch_assoc($result);
                     echo "
                     <strong>AS Number:</strong> {$as_info['as_num']}<br>
@@ -55,29 +68,46 @@
                     <strong>Country Code:</strong> {$as_info['country_code']}<br>
                     <strong>RIR:</strong> {$as_info['rir']}<br>
                     <strong>AS Name:</strong> {$as_info['as_name']}";
+                  }
+                  else{
+                    echo "<strong>There is no current inforamtion available for the requested AS number.</strong>";
+                  }
                     echo "</div><br><hr><br>";
                     echo"
                     <div class='asinfo'>
-                    <h2 class='header-highlight'>Delegation Info</h2><br>
+                    <h2 class='header-highlight'>Delegation Info</h2><br>";
+                  if ($dNumRows > 0) {
+                    echo"
                       <table align='center' border='1px solid black' width='100%' class='talign'>
                       <tr class='theader'>
                           <td>Timestamp</td>
-                          <td>AS Number</td>
                           <td>More Specific Prefix</td>
                           <td>Delegator</td>
-                          <td>Delegatee</td>
+                          <td>Delegatee</td>";
+                          if($bNumRows > 0){
+                            echo"<td>Relation</td>";
+                          }
+                    echo"
                       </tr>
                   ";
                   $counter = 0;
-                  while($row = mysqli_fetch_assoc($result)){
-                    if($counter < 20){
+                  while($row = mysqli_fetch_assoc($dResult)){
+                    set_time_limit(0);
+                    if($counter < 50){
                       echo "
                         <tr>
                           <td>$row[dates]</td>
-                          <td>$row[as_num]</td>
-                          <td>$row[prefix_more]</td>
-                          <td>$row[delegator]</td>
-                          <td>$row[delegatee]</td>
+                          <td><a href='prefixInfoProcessor.php?prefix={$row[prefix_more]}'>$row[prefix_more]</a></td>
+                          <td><a href='asInfoProcessor.php?asNumber={$row[delegator]}'>$row[delegator]</a></td>
+                          <td><a href='asInfoProcessor.php?asNumber={$row[delegatee]}'>$row[delegatee]</a></td>";
+                          if($bNumRows > 0){
+                            $rQuery = get_business_relation_query($row[delegator], $row[delegatee]);
+                            $rResult = mysqli_query($connection, $rQuery);
+                            $rRow = mysqli_fetch_assoc($rResult);
+                            echo"
+                            <td>$rRow[as_rel_type]</td>";
+                          }
+                      echo"
                         </tr>
                       ";
                     }
@@ -86,14 +116,14 @@
 ?>
                       <tr><td colspan="5">
                         <form name="result" method="POST" action="export.php">
-                          <input type="hidden" name="query" value="<?php echo $query;?>">
+                          <input type="hidden" name="query" value="<?php echo $dQuery;?>">
                           <input type="hidden" name="fileName" value="asDelegationInfo">
                           <input type="submit" name="export" value="Export full data to CSV" class="flatButton">
                         </form>
                       </td></tr>
 <?php
                     echo "</table>";
-                    echo "<span class='highlight'> Total number of result found: <strong>{$numRows}</strong><br>
+                    echo "<span class='highlight'> Total number of result found: <strong>{$dNumRows}</strong><br>
                     This is a <strong>partial view</strong> of the actual result. Please <strong>click export button</strong> to get the full data into a (.csv) file.<br>
                     Time for creating of CSV file varies with the size of the result.</span>";
                     echo "</div>";
@@ -118,7 +148,7 @@
                     ";
                   $bCounter = 0;
                   while($bRow = mysqli_fetch_assoc($bResult)){
-                    if($bCounter < 20){
+                    if($bCounter < 50){
                       echo "
                         <tr>
                           <td>$bRow[as_1]</td>
@@ -144,7 +174,7 @@
                     Time for creating of CSV file varies with the size of the result.</span>";
                   }
                   else{
-                    echo "<strong>Requested AS number is not found. Please try with a valid AS number.</strong>";
+                    echo "<strong>There is no current inforamtion available for the requested AS number.</strong>";
                   }
               }
               else{
