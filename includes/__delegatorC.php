@@ -18,9 +18,11 @@ t_meta_data_s1.as_name
 FROM
 (
 SELECT
+t_delegation_s1.time_stamp AS time_stamp,
 t_delegation_s1.delegator AS delegator, 
 COUNT(t_delegation_s1.delegator) AS frequency 
-FROM t_delegation_s1 
+FROM t_delegation_s1
+WHERE t_delegation_s1.time_stamp >= '2017-01-01'
 GROUP BY t_delegation_s1.delegator 
 ORDER BY frequency DESC LIMIT 20
 ) AS top_as

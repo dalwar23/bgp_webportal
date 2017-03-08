@@ -35,6 +35,9 @@
         </div>
         <div id="main-content">
         	<div id="prefix-data">
+            <div class="menu">
+              <a href="index.php"><img src="images/home.png">&nbsp;&nbsp;Home</a>
+            </div>
             	<?php
                 if(isset($_GET['prefix'])){
                   $prefix = $_GET['prefix'];
@@ -49,11 +52,11 @@
                   if ($numRows > 0) {
                     echo"
                     <div class='prefix-info'>
-                    <h2 class='header-highlight'>Prefix Info</h2><br>
+                    <h2 class='header-highlight'>Prefix Info</h3><br>
+                    <h3>Prefix information for prefix [ $prefix ]</h5><br>
                       <table align='center' border='1px solid black' width='100%' class='talign'>
                       <tr class='theader'>
                           <td>Timestamp</td>
-                          <td>Prefix</td>
                           <td>Delegator</td>
                           <td>Delegatee</td>
                       </tr>
@@ -65,7 +68,6 @@
                       echo "
                         <tr>
                           <td>$row[dates]</td>
-                          <td>$row[prefix_more]</td>
                           <td><a href='asInfoProcessor.php?asNumber={$row[delegator]}'>$row[delegator]</a></td>
                           <td><a href='asInfoProcessor.php?asNumber={$row[delegatee]}'>$row[delegatee]</a></td>
                         </tr>

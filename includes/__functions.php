@@ -35,7 +35,8 @@ function get_delegation_query($asNumber){
 	t_delegation_s1.delegatee AS delegatee
 	FROM t_delegation_s1
 	WHERE
-	t_delegation_s1.delegatee='{$asNumber}' OR t_delegation_s1.delegator='{$asNumber}' ORDER BY dates DESC";
+	t_delegation_s1.delegatee='{$asNumber}' OR t_delegation_s1.delegator='{$asNumber}' ORDER BY dates DESC
+	";
 
 	return $dQuery;
 }
@@ -46,7 +47,8 @@ function get_business_rel_query($asNumber){
 	SELECT *
 	FROM t_business_rel_s1
 	WHERE 
-	t_business_rel_s1.as_1 = '{$asNumber}' OR t_business_rel_s1.as_2 = '{$asNumber}';";
+	t_business_rel_s1.as_1 = '{$asNumber}' OR t_business_rel_s1.as_2 = '{$asNumber}'
+	";
 
 	return $business_rel_query;
 }
@@ -61,20 +63,20 @@ function get_prefix_query($prefix){
 	t_delegation_s1.delegatee	AS delegatee
 	FROM t_delegation_s1
 	WHERE
-	t_delegation_s1.prefix_more ='{$prefix}';
+	t_delegation_s1.prefix_more ='{$prefix}'
 	";
 	
 	return $prefixQuery;
 }
 ?>
 <?php 
-function get_business_relation_query($delegator, $delegatee){
+function get_bRelation_query($as1, $as2){
 	$rQuery = "
 	SELECT
 	t_business_rel_s1.as_rel_type	AS as_rel_type
 	FROM t_business_rel_s1
 	WHERE
-	as_1 = '{$delegator}' AND as_2 = '{$delegatee}'
+	t_business_rel_s1.as_1 = '{$as1}' AND t_business_rel_s1.as_2 = '{$as2}'
 	";
 
 	return $rQuery;

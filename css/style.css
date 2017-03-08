@@ -71,19 +71,45 @@ Main Content
   text-align: left;
   /*background-color: green;*/
 }
+#main-content #prefix-data .menu{
+  text-align: left;
+  padding:20px 0;
+  font-weight: bold;
+}
+#main-content #prefix-data .menu a{
+  text-decoration: none;
+}
+#main-content #prefix-data h5{
+  color: #A55959;
+}
 #main-content #prefix-data .historical{
   float: left;
   height: auto;
   width: 47%;
   padding: 10px;
 }
-#main-content #prefix-data h5{
-  color: #A55959;
-}
 #main-content #prefix-data .current{
   float: right;
   height: auto;
   width: 47%;
+  padding: 10px;
+}
+#main-content #prefix-data .leftQuery{
+  float: left;
+  height: auto;
+  width: 29%;
+  padding: 10px;
+}
+#main-content #prefix-data .middleQuery{
+  float: left;
+  height: auto;
+  width: 29%;
+  padding: 10px;
+}
+#main-content #prefix-data .rightQuery{
+  float: right;
+  height: auto;
+  width: 32%;
   padding: 10px;
 }
 #main-content #prefix-data .asinfo{
@@ -118,7 +144,7 @@ Main Content
 #main-content .header-highlight{
   color: #A55959;
 }
-.flatButton{
+#main-content .flatButton{
   padding: 6px;
   border: 1px solid #98B5E2;
   background-color: #CAD9F0;
@@ -126,19 +152,79 @@ Main Content
   font-weight: normal;
   cursor: pointer;  
 }
-.flatButton:hover{
+#main-content .flatButton:hover{
   background-color: #98B5E2;
 }
-.txtBox{
+#main-content .txtBox{
     padding: 3px;
     border: 1px solid #DDDDDD;
     background-color:#E8F2FE; 
 }
-.txtBox:hover{
+#main-content .txtBox:hover{
   border: 1px solid #336699;
 }
-.txtBox:focus{
+#main-content .txtBox:focus{
   border: 1px solid #336699;
+}
+.message{
+  color: #FF0000;
+  text-align: center;
+  font-weight: bold;
+}
+/* -----------------------------------------
+Tab layout
+------------------------------------------*/
+/* Style the tab */
+div.tab {
+    overflow: hidden;
+    border: 1px solid #ccc;
+    background-color: #f1f1f1;
+}
+
+/* Style the links inside the tab */
+div.tab a {
+    float: left;
+    display: block;
+    color: black;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    transition: 0.3s;
+    font-size: 17px;
+}
+
+/* Change background color of links on hover */
+div.tab a:hover {
+    background-color: #ddd;
+}
+
+/* Create an active/current tablink class */
+div.tab a:focus, .active {
+    background-color: #ccc;
+}
+
+/* Style the tab content */
+.tabcontent {
+    display: none;
+    padding: 6px 12px;
+    -webkit-animation: fadeEffect 1s;
+    animation: fadeEffect 1s;
+}
+.tabcontent2 {
+    display: none;
+    padding: 6px 12px;
+    -webkit-animation: fadeEffect 1s;
+    animation: fadeEffect 1s;
+}
+/* Fade in tabs */
+@-webkit-keyframes fadeEffect {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
+@keyframes fadeEffect {
+    from {opacity: 0;}
+    to {opacity: 1;}
 }
 .clear{clear:both}
 /* ------------------------------------------

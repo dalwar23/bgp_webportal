@@ -35,6 +35,9 @@
         </div>
         <div id="main-content">
         	<div id="prefix-data">
+            <div class="menu">
+              <a href="index.php"><img src="images/home.png">&nbsp;&nbsp;Home</a>
+            </div>
             	<?php
                 if (isset($_GET['asNumber'])){
                   $asNumber = $_GET['asNumber'];
@@ -70,7 +73,7 @@
                     <strong>AS Name:</strong> {$as_info['as_name']}";
                   }
                   else{
-                    echo "<strong>There is no current inforamtion available for the requested AS number.</strong>";
+                    echo "<strong>There is no current inforamtion available for the requested AS number.<br> Possible reasons:<br>1. Not a valid AS number.<br>2. This AS is not active anymore.</strong>";
                   }
                     echo "</div><br><hr><br>";
                     echo"
@@ -97,15 +100,30 @@
                       echo "
                         <tr>
                           <td>$row[dates]</td>
-                          <td><a href='prefixInfoProcessor.php?prefix={$row[prefix_more]}'>$row[prefix_more]</a></td>
-                          <td><a href='asInfoProcessor.php?asNumber={$row[delegator]}'>$row[delegator]</a></td>
-                          <td><a href='asInfoProcessor.php?asNumber={$row[delegatee]}'>$row[delegatee]</a></td>";
+                          <td><a href='prefixInfoProcessor.php?prefix={$row[prefix_more]}'>$row[prefix_more]</a></td>";
+                          if($asNumber == $row[delegator]){
+                            echo "<td>$row[delegator]</td>";
+                          }
+                          else{
+                            echo "<td><a href='asInfoProcessor.php?asNumber={$row[delegator]}'>$row[delegator]</a></td>";
+                          }
+                          if($asNumber == $row[delegatee]){
+                            echo "<td>$row[delegatee]</td>";
+                          }
+                          else{
+                            echo "<td><a href='asInfoProcessor.php?asNumber={$row[delegatee]}'>$row[delegatee]</a></td>";
+                          }
+                          
                           if($bNumRows > 0){
-                            $rQuery = get_business_relation_query($row[delegator], $row[delegatee]);
+                            $rQuery = get_bRelation_query($row[delegator], $row[delegatee]);
                             $rResult = mysqli_query($connection, $rQuery);
                             $rRow = mysqli_fetch_assoc($rResult);
-                            echo"
-                            <td>$rRow[as_rel_type]</td>";
+                            if($rRow[as_rel_type]){
+                              echo"<td>$rRow[as_rel_type]</td>";
+                            }
+                            else{
+                              echo"<td>undefined</td>";
+                            }
                           }
                       echo"
                         </tr>
@@ -143,7 +161,7 @@
                       <tr class='theader'>
                           <td>AS-1</td>
                           <td>AS-2</td>
-                          <td>Relationship</td>
+                          <td>Relation</td>
                       </tr>
                     ";
                   $bCounter = 0;

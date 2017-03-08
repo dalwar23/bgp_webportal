@@ -11,21 +11,23 @@ include('__dbConnection.php');
 
 //query to get data from the table
 $sql = "SELECT
-top_as.delegatee AS delegatee,
+top_as.delegator AS delegator,
 t_meta_data_s1.country_code AS country_code,
 t_meta_data_s1.rir AS rir,
 t_meta_data_s1.as_name
 FROM
 (
 SELECT
-t_delegation_s1.delegatee AS delegatee, 
-COUNT(t_delegation_s1.delegatee) AS frequency 
-FROM t_delegation_s1 
-GROUP BY t_delegation_s1.delegatee 
+t_delegation_s1.time_stamp AS time_stamp,
+t_delegation_s1.delegator AS delegator, 
+COUNT(t_delegation_s1.delegator) AS frequency 
+FROM t_delegation_s1
+WHERE t_delegation_s1.time_stamp < '2017-01-01'
+GROUP BY t_delegation_s1.delegator 
 ORDER BY frequency DESC LIMIT 20
 ) AS top_as
 JOIN t_meta_data_s1
-ON top_as.delegatee = t_meta_data_s1.as_num
+ON top_as.delegator = t_meta_data_s1.as_num
 ORDER BY frequency DESC";
 
 //execute query
@@ -35,7 +37,7 @@ $result = $connection->query($sql);
 <?php
 if ($result->num_rows > 0) {
     // output data of each row
-    echo"
+    echo "
         <tr class='theader'>
             <td>AS Number</td>
             <td>Country Code</td>
@@ -45,8 +47,8 @@ if ($result->num_rows > 0) {
     ";
     while($row = $result->fetch_assoc()) {
     	echo "
-    		<tr>
-    			<td><a href='asInfoProcessor.php?asNumber={$row[delegatee]}'>$row[delegatee]</a></td>
+         	<tr>
+    			<td><a href='asInfoProcessor.php?asNumber={$row[delegator]}'>$row[delegator]</a></td>
     			<td>$row[country_code]</td>
     			<td>$row[rir]</td>
     			<td>$row[as_name]</td>

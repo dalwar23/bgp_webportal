@@ -18,9 +18,11 @@
 			<form name="asQueryForm" method="POST" action="asInfoProcessor.php">
 				<table align="center" border="0" width="100%">	
 					<tr>
-						<td align="right" width="50%">Please enter an autonomous system (AS) number (e.g. 35487):</td>
-						<td align="center"><input type="number" name="asNumber" minlength="1" required="required" autocomplete="on" autofocus class="txtBox"></td>
-						<td align="right"><input type="submit" name="asQuerySubmit" value="Find AS" class="flatButton"></td>
+						<td align="center" colspan="2">Please enter an AS number (e.g. 354)</td>
+					</tr>
+					<tr>
+						<td align="right"><input type="number" name="asNumber" minlength="1" required="required" autocomplete="off" autofocus class="txtBox"></td>
+						<td align="left"><input type="submit" name="asQuerySubmit" value="Find AS Info" class="flatButton"></td>
 					</tr>
 				</table>
 			</form>
