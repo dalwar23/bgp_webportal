@@ -6,6 +6,8 @@
 	* @email dalwar014@gmail.com
 	* @website http://www.user.tu-berlin.de/hossainarif
 	*/
+?>
+<?php
 	//Start the output buffer
 	ob_start();
 ?>

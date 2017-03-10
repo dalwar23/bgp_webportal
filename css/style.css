@@ -3,6 +3,7 @@
  * @author dalwar hossain
  * @copyright 2017
  * @email dalwar014@gmail.com
+ * @website http://www.user.tu-berlin.de/hossainarif
  * @date 30.01.2017 23:38
  */
 
@@ -195,12 +196,12 @@ div.tab a {
 
 /* Change background color of links on hover */
 div.tab a:hover {
-    background-color: #ddd;
+    background-color: #98B5E2;
 }
 
 /* Create an active/current tablink class */
 div.tab a:focus, .active {
-    background-color: #ccc;
+    background-color: #CAD9F0;
 }
 
 /* Style the tab content */

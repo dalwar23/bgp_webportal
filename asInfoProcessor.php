@@ -1,4 +1,12 @@
 <?php
+/**
+* @author Md Dalwar Hossain Arif
+* @copyright 2017
+* @email dalwar014@gmail.com
+* @website http://www.user.tu-berlin.de/hossainarif
+*/
+?>
+<?php
 	//Start output buffer
 	ob_start();
 ?>

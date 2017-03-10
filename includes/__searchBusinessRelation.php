@@ -1,4 +1,12 @@
 <?php
+/**
+* @author Md Dalwar Hossain Arif
+* @copyright 2017
+* @email dalwar014@gmail.com
+* @website http://www.user.tu-berlin.de/hossainarif
+*/
+?>
+<?php
 	//Start the output buffer
 	ob_start();	
 ?>
@@ -39,7 +47,7 @@
 		<div class="asquery">
 			<form name="asQueryForm" method="POST">
 				<table align="center" border="0" width="100%">
-					<?php if(isset($_POST['as1']) AND isset($_POST['as2'])){echo "<tr><td align='center' colspan='2' class='message'>{$message}</td></tr>";} ?>
+					<?php if(isset($_POST['as1']) AND isset($_POST['as2'])){echo "<tr><td align='center' colspan='3' class='message'>{$message}</td></tr>";} ?>
 					<tr>
 						<td align="center" colspan="2">Please enter AS1 and AS2 (e.g. 987)</td>
 					</tr>

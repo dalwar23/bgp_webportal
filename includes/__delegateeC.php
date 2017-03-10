@@ -14,7 +14,8 @@ $sql = "SELECT
 top_as.delegatee AS delegatee,
 t_meta_data_s1.country_code AS country_code,
 t_meta_data_s1.rir AS rir,
-t_meta_data_s1.as_name
+t_meta_data_s1.as_name AS as_name,
+top_as.frequency AS frequency
 FROM
 (
 SELECT
@@ -28,7 +29,7 @@ ORDER BY frequency DESC LIMIT 20
 ) AS top_as
 JOIN t_meta_data_s1
 ON top_as.delegatee = t_meta_data_s1.as_num
-ORDER BY frequency DESC";
+ORDER BY frequency DESC LIMIT 20";
 
 //execute query
 $result = $connection->query($sql);
@@ -39,21 +40,27 @@ if ($result->num_rows > 0) {
     // output data of each row
     echo"
         <tr class='theader'>
+            <td>Serial</td>
             <td>AS Number</td>
+            <td>Frequency</td>
             <td>Country Code</td>
             <td>RIR</td>
             <td>AS Name</td>
         </tr>
     ";
+    $count=1;
     while($row = $result->fetch_assoc()) {
     	echo "
     		<tr>
+                <td>{$count}</td>
     			<td><a href='asInfoProcessor.php?asNumber={$row[delegatee]}'>$row[delegatee]</a></td>
+                <td>$row[frequency]</td>
     			<td>$row[country_code]</td>
     			<td>$row[rir]</td>
     			<td>$row[as_name]</td>
     		</tr>
     	";
+        $count++;
     }
 } else {
     echo "<tr><td>0 results</td></tr>";

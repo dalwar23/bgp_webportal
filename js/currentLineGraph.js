@@ -1,3 +1,9 @@
+/**
+* @author Md Dalwar Hossain Arif
+* @copyright 2017
+* @email dalwar014@gmail.com
+* @website http://www.user.tu-berlin.de/hossainarif
+*/
 $(document).ready(function(){
 	$.ajax({
 		url : "http://localhost/bgp_webportal/includes/__currentData.php",
