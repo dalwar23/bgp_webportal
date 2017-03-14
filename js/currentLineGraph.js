@@ -6,7 +6,7 @@
 */
 $(document).ready(function(){
 	$.ajax({
-		url : "http://localhost/bgp_webportal/includes/__currentData.php",
+		url : "http://tkrenc0.inet.tu-berlin.de/bgp_webportal/includes/__currentData.php",
 		type : "GET",
 		success : function(data){
 			console.log(data);

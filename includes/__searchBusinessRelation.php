@@ -54,7 +54,7 @@
 					<tr>
 						<td align="right"><input type="number" name="as1" minlength="1" required="required" autocomplete="on" autofocus class="txtBox"></td>
 						<td align="right"><input type="number" name="as2" minlength="1" required="required" autocomplete="on" autofocus class="txtBox"></td>
-						<td align="left"><input type="submit" name="asQuerySubmit" value="Find Business Relation" class="flatButton"></td>
+						<td align="left"><input type="submit" name="asQuerySubmit" value="Find Relation" class="flatButton"></td>
 					</tr>
 				</table>
 			</form>
