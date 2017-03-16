@@ -12,7 +12,10 @@ header('Content-Type: application/json');
 include('__dbConnection.php');
 
 //query to get data from the table
-$sql = "SELECT * FROM t_historical_s1 WHERE time_stamp >= DATE(NOW() - INTERVAL 30 DAY) ORDER BY time_stamp ASC";
+$sql = "SELECT
+        time_stamp, total_prefixes
+        FROM t_historical_s1
+        WHERE time_stamp LIKE '%01' ORDER BY time_stamp ASC";
 
 //execute query
 $result = $connection->query($sql);

@@ -121,7 +121,7 @@
                           else{
                             echo "<td><a href='asInfoProcessor.php?asNumber={$row[delegatee]}'>$row[delegatee]</a></td>";
                           }
-                          
+
                           if($bNumRows > 0){
                             $rQuery = get_bRelation_query($row[delegator], $row[delegatee]);
                             $rResult = mysqli_query($connection, $rQuery);
@@ -139,19 +139,9 @@
                     }
                     $counter++;
                     }
-?>
-                      <tr><td colspan="5">
-                        <form name="result" method="POST" action="export.php">
-                          <input type="hidden" name="query" value="<?php echo $dQuery;?>">
-                          <input type="hidden" name="fileName" value="asDelegationInfo">
-                          <input type="submit" name="export" value="Export full data to CSV" class="flatButton">
-                        </form>
-                      </td></tr>
-<?php
                     echo "</table>";
                     echo "<span class='highlight'> Total number of result found: <strong>{$dNumRows}</strong><br>
-                    This is a <strong>partial view</strong> of the actual result. Please <strong>click export button</strong> to get the full data into a (.csv) file.<br>
-                    Time for creating of CSV file varies with the size of the result.</span>";
+                    This is a <strong>partial view</strong> of the actual result.</span>";
                     echo "</div>";
                     //mysqli_close($connection);
                   }
@@ -186,18 +176,10 @@
                     $bCounter++;
                   }
               ?>
-                      <tr><td colspan="3">
-                        <form name="result" method="POST" action="export.php">
-                          <input type="hidden" name="query" value="<?php echo $business_rel_query;?>">
-                          <input type="hidden" name="fileName" value="asBusinessRelationshipInfo">
-                          <input type="submit" name="export" value="Export full data to CSV" class="flatButton">
-                        </form>
-                      </td></tr>
               <?php
                     echo "</table>";
                     echo "<span class='highlight'> Total number of result found: <strong>{$bNumRows}</strong><br>
-                    This is a <strong>partial view</strong> of the actual result. Please <strong>click export button</strong> to get the full data into a (.csv) file.<br>
-                    Time for creating of CSV file varies with the size of the result.</span>";
+                    This is a <strong>partial view</strong> of the actual result.</span>";
                   }
                   else{
                     echo "<strong>There is no current inforamtion available for the requested AS number.</strong>";
@@ -216,9 +198,9 @@
         <div id="footer">
           <?php include_once('includes/__footer.php');?>
         </div>
-    </div> 
+    </div>
   </body>
-</html>         
+</html>
 <?php
 	//Flush Output Buffer
 	ob_flush();

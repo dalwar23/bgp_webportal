@@ -83,19 +83,9 @@
                     }
                     $counter++;
                     }
-?>
-                      <tr><td colspan="5">
-                        <form name="result" method="POST" action="export.php">
-                          <input type="hidden" name="query" value="<?php echo $query;?>">
-                          <input type="hidden" name="fileName" value="prefixInfo">
-                          <input type="submit" name="export" value="Export full data to CSV" class="flatButton">
-                        </form>
-                      </td></tr>
-<?php
                     echo "</table>";
                     echo "<span class='highlight'> Total number of result found: <strong>{$numRows}</strong><br>
-                    This is a <strong>partial view</strong> of the actual result. Please <strong>click export button</strong> to get the full data into a (.csv) file.<br>
-                    Time for creating of CSV file varies with the size of the result.</span>";
+                    This is a <strong>partial view</strong> of the actual result.</span>";
                     //mysqli_close($connection);
                     echo "</div>";
                   }
@@ -119,9 +109,9 @@
         <div id="footer">
           <?php include_once('includes/__footer.php');?>
         </div>
-    </div> 
+    </div>
   </body>
-</html>         
+</html>
 <?php
 	//Flush Output Buffer
 	ob_flush();

@@ -12,11 +12,10 @@ body, p, h1, h2, h3, h4, h5, h6, form, fieldset {
      margin: 0px;
      padding: 0px;
 }
-
 body {
      padding: 0px;
      margin: 0px;
-     font-family: ubuntu, Georgia, "Times New Roman", Times, serif;
+     font-family: 'Bree Serif', Fallback, serif;
      font-size: 12px;
      text-align: left;
      line-height: 1.6em;
@@ -59,6 +58,7 @@ Main Content
 #main-content .intro{
   text-align: justify;
   padding-bottom: 10px;
+  font-size: 14px;
 }
 
 #main-content #prefix-data{
@@ -99,19 +99,21 @@ Main Content
 #main-content #prefix-data .leftQuery{
   float: left;
   height: auto;
-  width: 29%;
+  width: 47%;
   padding: 10px;
 }
+/*
 #main-content #prefix-data .middleQuery{
   float: left;
   height: auto;
   width: 29%;
   padding: 10px;
 }
+*/
 #main-content #prefix-data .rightQuery{
   float: right;
   height: auto;
-  width: 32%;
+  width: 47%;
   padding: 10px;
 }
 #main-content #prefix-data .asinfo{
@@ -152,7 +154,7 @@ Main Content
   background-color: #CAD9F0;
   color: #333333;
   font-weight: normal;
-  cursor: pointer;  
+  cursor: pointer;
 }
 #main-content .flatButton:hover{
   background-color: #98B5E2;
@@ -160,7 +162,7 @@ Main Content
 #main-content .txtBox{
     padding: 3px;
     border: 1px solid #DDDDDD;
-    background-color:#E8F2FE; 
+    background-color:#E8F2FE;
 }
 #main-content .txtBox:hover{
   border: 1px solid #336699;

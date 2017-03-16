@@ -13,18 +13,18 @@ $(document).ready(function(){
 
 			var time_stamp = [];
 			var total_prefixes = [];
-			var c_isolated = [];
-			var c_up = [];
-      var c_down = [];
-      var c_crossed = [];
+			//var c_isolated = [];
+			//var c_up = [];
+      //var c_down = [];
+      //var c_crossed = [];
 
 			for(var i in data) {
 				time_stamp.push(data[i].time_stamp);
 				total_prefixes.push(data[i].total_prefixes);
-				c_isolated.push(data[i].c_isolated);
-				c_up.push(data[i].c_up);
-        c_down.push(data[i].c_down);
-        c_crossed.push(data[i].c_crossed);
+				//c_isolated.push(data[i].c_isolated);
+				//c_up.push(data[i].c_up);
+        //c_down.push(data[i].c_down);
+        //c_crossed.push(data[i].c_crossed);
 			}
 
 			var chartdata = {
@@ -39,7 +39,7 @@ $(document).ready(function(){
 						pointHoverBackgroundColor: "rgba(129, 69, 152, 1)",
 						pointHoverBorderColor: "rgba(129, 69, 152, 1)",
 						data: total_prefixes
-					},
+					}/*,
 					{
 						label: "C_isolated",
 						fill: false,
@@ -79,7 +79,7 @@ $(document).ready(function(){
 						pointHoverBackgroundColor: "rgba(204, 0, 204, 1)",
 						pointHoverBorderColor: "rgba(204, 0, 204, 1)",
 						data: c_crossed
-					}
+					}*/
 				]
 			};
 

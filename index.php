@@ -17,6 +17,7 @@
     <meta name='author' content='dalwar014@gmail.com' >
     <meta name='copyright' content='dalwar hossain, www.inet.tu-berlin.de' >
     <link type="text/CSS" href="css/style.css" rel="stylesheet" media="all"/>
+    <link href="https://fonts.googleapis.com/css?family=Bree+Serif" rel="stylesheet">
   </head>
   <title>BGP| Prefix Delegation Data</title>
   <body>
@@ -41,7 +42,7 @@
               <canvas id="mycanvas-historical"></canvas>
             </div>
             <div class="current">
-              <h2>Recent Data (Last 30 Days)</h2>
+              <h2>Prefix Growth</h2>
               <h5>(Click on the color legends for filter)</h5>
               <canvas id="mycanvas-current"></canvas>
             </div>
@@ -52,24 +53,27 @@
               <br/>
               <?php include('includes/__searchAS.php');?>
             </div>
+            <!--
             <div class="middleQuery">
               <h2>Business Relation Query</h2>
               <br/>
-              <?php include('includes/__searchBusinessRelation.php');?>
+              This is the place for business relation query
+              include __searchBusinessRelationship.php
             </div>
+            -->
             <div class="rightQuery">
               <h2>Prefix Query</h2>
               <br/>
               <?php include('includes/__searchPrefix.php');?>
-            </div> 
+            </div>
             <div class="clear"></div>
             <!-- ******************************************** -->
             <div class="historical">
               <h2>Top 20 Delegator AS</h2>
               <br/>
               <div class="tab">
-                <a href="javascript:void(0)" class="tablinks" id="defaultOpen" onclick="openDelegator(event, 'delegator-2017')">2017-Present</a>
-                <a href="javascript:void(0)" class="tablinks" onclick="openDelegator(event, 'delegator-2016')">2005-2016</a>
+                <a href="javascript:void(0)" class="tablinks" id="defaultOpen" onclick="openDelegator(event, 'delegator-2017')">Current</a>
+                <a href="javascript:void(0)" class="tablinks" onclick="openDelegator(event, 'delegator-2016')">Historical</a>
               </div>
               <div id="delegator-2017" class="tabcontent">
                 <?php include('includes/__delegatorC.php');?>
@@ -82,8 +86,8 @@
               <h2>Top 20 Delegatee AS</h2>
               <br/>
               <div class="tab">
-                <a href="javascript:void(0)" class="tablinks2" id="defaultOpen2" onclick="openDelegatee(event, 'delegatee-2017')">2017-Present</a>
-                <a href="javascript:void(0)" class="tablinks2" onclick="openDelegatee(event, 'delegatee-2016')">2005-2016</a>
+                <a href="javascript:void(0)" class="tablinks2" id="defaultOpen2" onclick="openDelegatee(event, 'delegatee-2017')">Current</a>
+                <a href="javascript:void(0)" class="tablinks2" onclick="openDelegatee(event, 'delegatee-2016')">Historical</a>
               </div>
               <div id="delegatee-2017" class="tabcontent2">
                 <?php include('includes/__delegateeC.php');?>
@@ -91,8 +95,8 @@
               <div id="delegatee-2016" class="tabcontent2">
                 <?php include('includes/__delegateeH.php');?>
               </div>
-            </div> 
-            <!-- ******************************************** -->                               
+            </div>
+            <!-- ******************************************** -->
           </div>
           <div class="clear"></div>
         </div>

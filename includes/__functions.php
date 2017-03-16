@@ -6,7 +6,7 @@
 * @website http://www.user.tu-berlin.de/hossainarif
 */
 ?>
-<?php 
+<?php
 	//Start the output buffer
 	ob_start();
 ?>
@@ -20,12 +20,7 @@
 <?php
 function get_as_query($asNumber){
 	$asQuery = "
-	SELECT
-	t_meta_data_s1.as_num AS as_num,
-	t_meta_data_s1.conesize AS conesize,
-	t_meta_data_s1.country_code AS country_code,
-	t_meta_data_s1.rir AS rir,
-	t_meta_data_s1.as_name 	AS as_name
+	SELECT *
 	FROM t_meta_data_s1
 	WHERE t_meta_data_s1.as_num ='{$asNumber}'
 	";
@@ -43,7 +38,8 @@ function get_delegation_query($asNumber){
 	t_delegation_s1.delegatee AS delegatee
 	FROM t_delegation_s1
 	WHERE
-	t_delegation_s1.delegatee='{$asNumber}' OR t_delegation_s1.delegator='{$asNumber}' ORDER BY dates DESC
+	t_delegation_s1.delegatee='{$asNumber}' OR t_delegation_s1.delegator='{$asNumber}'
+	ORDER BY dates DESC LIMIT 200
 	";
 
 	return $dQuery;
@@ -54,7 +50,7 @@ function get_business_rel_query($asNumber){
 	$business_rel_query = "
 	SELECT *
 	FROM t_business_rel_s1
-	WHERE 
+	WHERE
 	t_business_rel_s1.as_1 = '{$asNumber}' OR t_business_rel_s1.as_2 = '{$asNumber}'
 	";
 
@@ -73,11 +69,11 @@ function get_prefix_query($prefix){
 	WHERE
 	t_delegation_s1.prefix_more ='{$prefix}'
 	";
-	
+
 	return $prefixQuery;
 }
 ?>
-<?php 
+<?php
 function get_bRelation_query($as1, $as2){
 	$rQuery = "
 	SELECT
