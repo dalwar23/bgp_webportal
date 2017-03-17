@@ -24,7 +24,7 @@
     <div id="wrapper">
         <div id="header">
           <h1> Welcome to BGP (IPv4) Prefix Delegation Structure </h1>
-          <h2> Inet - TU Berlin, Germany - 2017 </h2>
+          <h2> INET - TU Berlin, Germany - 2017 </h2>
           <h4><a href="http://www.inet.tu-berlin.de" target="_blank">www.inet.tu-berlin.de</a></h4>
         </div>
         <div id="main-content">
@@ -37,12 +37,12 @@
           </p>
           <div id="prefix-data">
             <div class="historical">
-              <h2>BGP Data Stream</h2>
+              <h2>BGP Delegation Data Stream</h2>
               <h5>(Click on the color legends for filter)</h5>
               <canvas id="mycanvas-historical"></canvas>
             </div>
             <div class="current">
-              <h2>Prefix Growth</h2>
+              <h2>BGP Delegation Prefix Growth</h2>
               <h5>(Click on the color legends for filter)</h5>
               <canvas id="mycanvas-current"></canvas>
             </div>

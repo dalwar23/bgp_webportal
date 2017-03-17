@@ -19,13 +19,12 @@ top_as.frequency AS frequency
 FROM
 (
 SELECT
-t_delegation_s1.time_stamp  AS time_stamp,
-t_delegation_s1.delegatee AS delegatee, 
-COUNT(t_delegation_s1.delegatee) AS frequency 
-FROM t_delegation_s1
-WHERE t_delegation_s1.time_stamp >= '2017-01-01'
-GROUP BY t_delegation_s1.delegatee 
-ORDER BY frequency DESC LIMIT 20
+t_current_delegation_s1.time_stamp  AS time_stamp,
+t_current_delegation_s1.delegatee AS delegatee, 
+COUNT(DISTINCT(t_current_delegation_s1.delegator)) AS frequency 
+FROM t_current_delegation_s1
+GROUP BY t_current_delegation_s1.delegatee 
+ORDER BY frequency DESC
 ) AS top_as
 JOIN t_meta_data_s1
 ON top_as.delegatee = t_meta_data_s1.as_num

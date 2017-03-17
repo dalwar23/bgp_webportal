@@ -32,13 +32,14 @@
     <meta name='author' content='dalwar014@gmail.com' >
     <meta name='copyright' content='dalwar hossain, www.inet.tu-berlin.de' >
     <link type="text/CSS" href="css/style.css" rel="stylesheet" media="all"/>
+    <link href="https://fonts.googleapis.com/css?family=Bree+Serif" rel="stylesheet">
   </head>
   <title>BGP| Prefix Delegation Data</title>
   <body>
     <div id="wrapper">
         <div id="header">
           <h1> Welcome to BGP (IPv4) Prefix Delegation Structure </h1>
-          <h2> Inet - TU Berlin, Germany - 2017 </h2>
+          <h2> INET - TU Berlin, Germany - 2017 </h2>
           <h4><a href="http://www.inet.tu-berlin.de" target="_blank">www.inet.tu-berlin.de</a></h4>
         </div>
         <div id="main-content">
@@ -91,7 +92,6 @@
                     echo"
                       <table align='center' border='1px solid black' width='100%' class='talign'>
                       <tr class='theader'>
-                          <td>Timestamp</td>
                           <td>More Specific Prefix</td>
                           <td>Delegator</td>
                           <td>Delegatee</td>";
@@ -107,7 +107,6 @@
                     if($counter < 50){
                       echo "
                         <tr>
-                          <td>$row[dates]</td>
                           <td><a href='prefixInfoProcessor.php?prefix={$row[prefix_more]}'>$row[prefix_more]</a></td>";
                           if($asNumber == $row[delegator]){
                             echo "<td>$row[delegator]</td>";
@@ -140,8 +139,9 @@
                     $counter++;
                     }
                     echo "</table>";
-                    echo "<span class='highlight'> Total number of result found: <strong>{$dNumRows}</strong><br>
-                    This is a <strong>partial view</strong> of the actual result.</span>";
+                    if($dNumRows>50){
+                      echo "This is a <strong>partial view</strong> of the actual result.";
+                    }
                     echo "</div>";
                     //mysqli_close($connection);
                   }
@@ -178,8 +178,9 @@
               ?>
               <?php
                     echo "</table>";
-                    echo "<span class='highlight'> Total number of result found: <strong>{$bNumRows}</strong><br>
-                    This is a <strong>partial view</strong> of the actual result.</span>";
+                    if($bNumRows>50){
+                      echo "This is a <strong>partial view</strong> of the actual result.";
+                    }
                   }
                   else{
                     echo "<strong>There is no current inforamtion available for the requested AS number.</strong>";

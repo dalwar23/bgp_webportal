@@ -21,7 +21,7 @@ FROM
 SELECT
 t_delegation_s1.time_stamp  AS time_stamp,
 t_delegation_s1.delegatee AS delegatee, 
-COUNT(t_delegation_s1.delegatee) AS frequency 
+COUNT(DISTINCT(t_delegation_s1.delegator)) AS frequency 
 FROM t_delegation_s1
 WHERE t_delegation_s1.time_stamp < '2017-01-01'
 GROUP BY t_delegation_s1.delegatee 
