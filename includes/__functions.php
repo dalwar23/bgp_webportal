@@ -39,7 +39,7 @@ function get_delegation_query($asNumber){
 	FROM t_delegation_s1
 	WHERE
 	t_delegation_s1.delegatee='{$asNumber}' OR t_delegation_s1.delegator='{$asNumber}'
-	ORDER BY dates DESC LIMIT 200
+	ORDER BY dates DESC
 	";
 
 	return $dQuery;
@@ -68,6 +68,7 @@ function get_prefix_query($prefix){
 	FROM t_delegation_s1
 	WHERE
 	t_delegation_s1.prefix_more ='{$prefix}'
+	ORDER BY dates DESC
 	";
 
 	return $prefixQuery;

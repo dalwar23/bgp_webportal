@@ -55,8 +55,8 @@
                 {
                   $asNumber = $_POST['asNumber'];
                 }
-            		if($asNumber){
-            			$query = get_as_query($asNumber);
+            	if($asNumber){
+            	  $query = get_as_query($asNumber);
                   $result = mysqli_query($connection,$query);
                   $numRows = mysqli_num_rows($result);
                   //----------------------------------------
@@ -64,9 +64,9 @@
                   $dResult = mysqli_query($connection,$dQuery);
                   $dNumRows = mysqli_num_rows($dResult);
                   //----------------------------------------
-                  $business_rel_query = get_business_rel_query($asNumber);
+                  /*$business_rel_query = get_business_rel_query($asNumber);
                   $bResult = mysqli_query($connection,$business_rel_query);
-                  $bNumRows = mysqli_num_rows($bResult);
+                  $bNumRows = mysqli_num_rows($bResult);*/
                   //----------------------------------------
                   echo "
                   <div id='as'>
@@ -101,10 +101,10 @@
                     echo"
                       </tr>
                   ";
-                  $counter = 0;
+                 /* $counter = 0;*/
                   while($row = mysqli_fetch_assoc($dResult)){
                     set_time_limit(0);
-                    if($counter < 50){
+                   /* if($counter < 50){*/
                       echo "
                         <tr>
                           <td><a href='prefixInfoProcessor.php?prefix={$row[prefix_more]}'>$row[prefix_more]</a></td>";
@@ -121,7 +121,7 @@
                             echo "<td><a href='asInfoProcessor.php?asNumber={$row[delegatee]}'>$row[delegatee]</a></td>";
                           }
 
-                          if($bNumRows > 0){
+                         /* if($bNumRows > 0){*/
                             $rQuery = get_bRelation_query($row[delegator], $row[delegatee]);
                             $rResult = mysqli_query($connection, $rQuery);
                             $rRow = mysqli_fetch_assoc($rResult);
@@ -131,17 +131,14 @@
                             else{
                               echo"<td>undefined</td>";
                             }
-                          }
+                         /* }*/
                       echo"
                         </tr>
                       ";
-                    }
-                    $counter++;
+                   /* }
+                    $counter++;*/
                     }
                     echo "</table>";
-                    if($dNumRows>50){
-                      echo "This is a <strong>partial view</strong> of the actual result.";
-                    }
                     echo "</div>";
                     //mysqli_close($connection);
                   }
@@ -152,7 +149,7 @@
             	</div>
               <div class="business">
               <?php
-                echo"<h2 class='header-highlight'>Business Relationship Info</h2><br>";
+               /* echo"<h2 class='header-highlight'>Business Relationship Info</h2><br>";
                   if($bNumRows > 0){
                     echo"
                       <table align='center' border='1px solid black' width='100%' class='talign'>
@@ -175,9 +172,7 @@
                     }
                     $bCounter++;
                   }
-              ?>
-              <?php
-                    echo "</table>";
+                   echo "</table>";
                     if($bNumRows>50){
                       echo "This is a <strong>partial view</strong> of the actual result.";
                     }
@@ -190,9 +185,9 @@
                  // Show error message
                  echo "<tr><td>Server could not understand the request. Please try again!";
                  echo "<br/><br/><a href='index.php'>Back</a><tr><td>";
-              }
+              }*/
               ?>
-              </div>
+             </div>
             </div>
             <div class="clear"></div>
         </div>

@@ -6,7 +6,7 @@
 */
 $(document).ready(function(){
 	$.ajax({
-		url : "http://localhost/bgp_webportal/includes/__currentData.php",
+		url : "http://130.149.221.196/bgp_webportal/includes/__currentData.php",
 		type : "GET",
 		success : function(data){
 			console.log(data);
