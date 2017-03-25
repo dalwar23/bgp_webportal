@@ -31,15 +31,32 @@ function get_as_query($asNumber){
 function get_delegation_query($asNumber){
 	$dQuery = "
 	SELECT
-	t_delegation_s1.time_stamp AS dates,
-	t_delegation_s1.prefix_less AS prefix_less,
-	t_delegation_s1.prefix_more AS prefix_more,
-	t_delegation_s1.delegator AS delegator,
-	t_delegation_s1.delegatee AS delegatee
+	top_as.dates	AS dates,
+	top_as.prefix_less AS prefix_less,
+	top_as.prefix_more AS prefix_more,
+	top_as.delegator	AS delegator,
+	top_as.delegatee	AS delegatee
+	FROM
+	(SELECT
+	t_delegation_s1.time_stamp			AS 	dates,
+	t_delegation_s1.prefix_less			AS	prefix_less,
+	t_delegation_s1.prefix_more			AS	prefix_more,
+	t_delegation_s1.delegator			AS	delegator,
+	t_delegation_s1.delegatee			AS	delegatee
 	FROM t_delegation_s1
-	WHERE
-	t_delegation_s1.delegatee='{$asNumber}' OR t_delegation_s1.delegator='{$asNumber}'
-	ORDER BY dates DESC
+	WHERE t_delegation_s1.delegator = '{$asNumber}'
+	GROUP BY t_delegation_s1.delegatee
+	UNION
+	SELECT
+	t_delegation_s1.time_stamp			AS 	dates,
+	t_delegation_s1.prefix_less			AS	prefix_less,
+	t_delegation_s1.prefix_more			AS	prefix_more,
+	t_delegation_s1.delegator			AS	delegator,
+	t_delegation_s1.delegatee			AS	delegatee
+	FROM t_delegation_s1
+	WHERE t_delegation_s1.delegatee = '{$asNumber}'
+	GROUP BY t_delegation_s1.delegator) AS top_as
+	ORDER BY top_as.dates DESC
 	";
 
 	return $dQuery;

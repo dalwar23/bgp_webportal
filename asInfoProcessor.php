@@ -55,8 +55,8 @@
                 {
                   $asNumber = $_POST['asNumber'];
                 }
-            	if($asNumber){
-            	  $query = get_as_query($asNumber);
+            	  if($asNumber){
+            	    $query = get_as_query($asNumber);
                   $result = mysqli_query($connection,$query);
                   $numRows = mysqli_num_rows($result);
                   //----------------------------------------
@@ -68,6 +68,7 @@
                   $bResult = mysqli_query($connection,$business_rel_query);
                   $bNumRows = mysqli_num_rows($bResult);*/
                   //----------------------------------------
+
                   echo "
                   <div id='as'>
                   <h2 class='header-highlight'>AS Info</h2><br>";
@@ -76,10 +77,11 @@
                     $as_info = mysqli_fetch_assoc($result);
                     echo "
                     <strong>AS Number:</strong> {$as_info['as_num']}<br>
+                    <strong>AS Name:</strong> {$as_info['as_name']}<br>
                     <strong>Customer Conesize:</strong> {$as_info['conesize']}<br>
                     <strong>Country Code:</strong> {$as_info['country_code']}<br>
-                    <strong>RIR:</strong> {$as_info['rir']}<br>
-                    <strong>AS Name:</strong> {$as_info['as_name']}";
+                    <strong>RIR:</strong> {$as_info['rir']}
+                    ";
                   }
                   else{
                     echo "<strong>There is no current inforamtion available for the requested AS number.<br> Possible reasons:<br>1. Not a valid AS number.<br>2. This AS is not active anymore.</strong>";
@@ -92,21 +94,17 @@
                     echo"
                       <table align='center' border='1px solid black' width='100%' class='talign'>
                       <tr class='theader'>
+                          <td>Timestamp</td>
                           <td>More Specific Prefix</td>
                           <td>Delegator</td>
-                          <td>Delegatee</td>";
-                          if($bNumRows > 0){
-                            echo"<td>Relation</td>";
-                          }
-                    echo"
-                      </tr>
-                  ";
-                 /* $counter = 0;*/
+                          <td>Delegatee</td>
+                          <td>Relation</td>
+                      </tr>";
                   while($row = mysqli_fetch_assoc($dResult)){
                     set_time_limit(0);
-                   /* if($counter < 50){*/
                       echo "
                         <tr>
+                          <td>$row[dates]</td>
                           <td><a href='prefixInfoProcessor.php?prefix={$row[prefix_more]}'>$row[prefix_more]</a></td>";
                           if($asNumber == $row[delegator]){
                             echo "<td>$row[delegator]</td>";
@@ -120,8 +118,6 @@
                           else{
                             echo "<td><a href='asInfoProcessor.php?asNumber={$row[delegatee]}'>$row[delegatee]</a></td>";
                           }
-
-                         /* if($bNumRows > 0){*/
                             $rQuery = get_bRelation_query($row[delegator], $row[delegatee]);
                             $rResult = mysqli_query($connection, $rQuery);
                             $rRow = mysqli_fetch_assoc($rResult);
@@ -131,63 +127,19 @@
                             else{
                               echo"<td>undefined</td>";
                             }
-                         /* }*/
                       echo"
                         </tr>
                       ";
-                   /* }
-                    $counter++;*/
-                    }
+                  }
                     echo "</table>";
                     echo "</div>";
-                    //mysqli_close($connection);
                   }
                   else{
                     echo "<strong>Requested AS number is not found. Please try with a valid AS number.</strong>";
                   }
+                }
             	?>
             	</div>
-              <div class="business">
-              <?php
-               /* echo"<h2 class='header-highlight'>Business Relationship Info</h2><br>";
-                  if($bNumRows > 0){
-                    echo"
-                      <table align='center' border='1px solid black' width='100%' class='talign'>
-                      <tr class='theader'>
-                          <td>AS-1</td>
-                          <td>AS-2</td>
-                          <td>Relation</td>
-                      </tr>
-                    ";
-                  $bCounter = 0;
-                  while($bRow = mysqli_fetch_assoc($bResult)){
-                    if($bCounter < 50){
-                      echo "
-                        <tr>
-                          <td>$bRow[as_1]</td>
-                          <td>$bRow[as_2]</td>
-                          <td>$bRow[as_rel_type]</td>
-                        </tr>
-                      ";
-                    }
-                    $bCounter++;
-                  }
-                   echo "</table>";
-                    if($bNumRows>50){
-                      echo "This is a <strong>partial view</strong> of the actual result.";
-                    }
-                  }
-                  else{
-                    echo "<strong>There is no current inforamtion available for the requested AS number.</strong>";
-                  }
-              }
-              else{
-                 // Show error message
-                 echo "<tr><td>Server could not understand the request. Please try again!";
-                 echo "<br/><br/><a href='index.php'>Back</a><tr><td>";
-              }*/
-              ?>
-             </div>
             </div>
             <div class="clear"></div>
         </div>
