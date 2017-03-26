@@ -118,9 +118,11 @@
                           else{
                             echo "<td><a href='asInfoProcessor.php?asNumber={$row[delegatee]}'>$row[delegatee]</a></td>";
                           }
+													/*Creating business relation column*/
                             $rQuery = get_bRelation_query($row[delegator], $row[delegatee]);
                             $rResult = mysqli_query($connection, $rQuery);
                             $rRow = mysqli_fetch_assoc($rResult);
+													/* query created*/
                             if($rRow[as_rel_type]){
                               echo"<td>$rRow[as_rel_type]</td>";
                             }
