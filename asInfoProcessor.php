@@ -56,7 +56,7 @@
                   $asNumber = $_POST['asNumber'];
                 }
             	  if($asNumber){
-            	    $query = get_as_query($asNumber);
+            	  $query = get_as_query($asNumber);
                   $result = mysqli_query($connection,$query);
                   $numRows = mysqli_num_rows($result);
                   //----------------------------------------
