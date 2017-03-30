@@ -35,14 +35,16 @@ function get_delegation_query($asNumber){
 	top_as.prefix_less AS prefix_less,
 	top_as.prefix_more AS prefix_more,
 	top_as.delegator	AS delegator,
-	top_as.delegatee	AS delegatee
+	top_as.delegatee	AS delegatee,
+	top_as.as_rel 		AS as_rel
 	FROM
 	(SELECT
 	t_delegation_s1.time_stamp			AS 	dates,
 	t_delegation_s1.prefix_less			AS	prefix_less,
 	t_delegation_s1.prefix_more			AS	prefix_more,
 	t_delegation_s1.delegator			AS	delegator,
-	t_delegation_s1.delegatee			AS	delegatee
+	t_delegation_s1.delegatee			AS	delegatee,
+	t_delegation_s1.as_rel 				AS 	as_rel
 	FROM t_delegation_s1
 	WHERE t_delegation_s1.delegator = '{$asNumber}'
 	GROUP BY t_delegation_s1.delegatee
@@ -52,7 +54,8 @@ function get_delegation_query($asNumber){
 	t_delegation_s1.prefix_less			AS	prefix_less,
 	t_delegation_s1.prefix_more			AS	prefix_more,
 	t_delegation_s1.delegator			AS	delegator,
-	t_delegation_s1.delegatee			AS	delegatee
+	t_delegation_s1.delegatee			AS	delegatee,
+	t_delegation_s1.as_rel 				AS 	as_rel
 	FROM t_delegation_s1
 	WHERE t_delegation_s1.delegatee = '{$asNumber}'
 	GROUP BY t_delegation_s1.delegator) AS top_as
@@ -63,25 +66,14 @@ function get_delegation_query($asNumber){
 }
 ?>
 <?php
-function get_business_rel_query($asNumber){
-	$business_rel_query = "
-	SELECT *
-	FROM t_business_rel_s1
-	WHERE
-	t_business_rel_s1.as_1 = '{$asNumber}' OR t_business_rel_s1.as_2 = '{$asNumber}'
-	";
-
-	return $business_rel_query;
-}
-?>
-<?php
 function get_prefix_query($prefix){
 	$prefixQuery = "
 	SELECT
 	t_delegation_s1.time_stamp	AS dates,
 	t_delegation_s1.prefix_more	AS prefix_more,
 	t_delegation_s1.delegator	AS delegator,
-	t_delegation_s1.delegatee	AS delegatee
+	t_delegation_s1.delegatee	AS delegatee,
+	t_delegation_s1.as_rel		AS as_rel
 	FROM t_delegation_s1
 	WHERE
 	t_delegation_s1.prefix_more ='{$prefix}'
@@ -89,19 +81,6 @@ function get_prefix_query($prefix){
 	";
 
 	return $prefixQuery;
-}
-?>
-<?php
-function get_bRelation_query($as1, $as2){
-	$rQuery = "
-	SELECT
-	t_business_rel_s1.as_rel_type	AS as_rel_type
-	FROM t_business_rel_s1
-	WHERE
-	t_business_rel_s1.as_1 = '{$as1}' AND t_business_rel_s1.as_2 = '{$as2}'
-	";
-
-	return $rQuery;
 }
 ?>
 <?php

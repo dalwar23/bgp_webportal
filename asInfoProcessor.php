@@ -32,7 +32,6 @@
     <meta name='author' content='dalwar014@gmail.com' >
     <meta name='copyright' content='dalwar hossain, www.inet.tu-berlin.de' >
     <link type="text/CSS" href="css/style.css" rel="stylesheet" media="all"/>
-    <link href="https://fonts.googleapis.com/css?family=Bree+Serif" rel="stylesheet">
   </head>
   <title>BGP| Prefix Delegation Data</title>
   <body>
@@ -92,7 +91,8 @@
                     <h2 class='header-highlight'>Delegation Info</h2><br>";
                   if ($dNumRows > 0) {
                     echo"
-                      <table align='center' border='1px solid black' width='100%' class='talign'>
+                      <p>Total number of results found:&nbsp;<strong>{$dNumRows}</strong></p><br>
+                      <table align='center' border='1px dotted black' width='100%' class='talign'>
                       <tr class='theader'>
                           <td>Timestamp</td>
                           <td>More Specific Prefix</td>
@@ -118,18 +118,8 @@
                           else{
                             echo "<td><a href='asInfoProcessor.php?asNumber={$row[delegatee]}'>$row[delegatee]</a></td>";
                           }
-													/*Creating business relation column*/
-                            $rQuery = get_bRelation_query($row[delegator], $row[delegatee]);
-                            $rResult = mysqli_query($connection, $rQuery);
-                            $rRow = mysqli_fetch_assoc($rResult);
-													/* query created*/
-                            if($rRow[as_rel_type]){
-                              echo"<td>$rRow[as_rel_type]</td>";
-                            }
-                            else{
-                              echo"<td>undefined</td>";
-                            }
                       echo"
+                          <td>$row[as_rel]</td>  
                         </tr>
                       ";
                   }

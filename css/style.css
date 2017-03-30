@@ -6,7 +6,13 @@
  * @website http://www.user.tu-berlin.de/hossainarif
  * @date 30.01.2017 23:38
  */
-
+/*----------------------------------------------
+Font face
+----------------------------------------------*/
+@font-face {
+  font-family: 'BreeSerif';
+  src: url('../fonts/BreeSerif.otf');
+}
 /*------------------- CSS RESETS START -------*/
 body, p, h1, h2, h3, h4, h5, h6, form, fieldset {
      margin: 0px;
@@ -15,7 +21,7 @@ body, p, h1, h2, h3, h4, h5, h6, form, fieldset {
 body {
      padding: 0px;
      margin: 0px;
-     font-family: 'Bree Serif', Fallback, serif;
+     font-family: 'BreeSerif', Fallback, serif;
      font-size: 12px;
      text-align: left;
      line-height: 1.6em;
@@ -142,6 +148,12 @@ Main Content
   font-size: 110%;
   font-weight: bold;
 }
+#main-content #prefix-data table {
+  text-align: center;
+  border-spacing: 3px;
+  border-collapse: collapse;
+  vertical-align: top;
+}
 #main-content .talign{
   text-align: center;
 }
@@ -153,7 +165,7 @@ Main Content
   border: 1px solid #98B5E2;
   background-color: #CAD9F0;
   color: #333333;
-  font-family:'Bree serif', Fallback, serif;
+  font-family:'BreeSerif', Fallback, serif;
   font-weight: normal;
   cursor: pointer;
 }
@@ -175,6 +187,45 @@ Main Content
   color: #FF0000;
   text-align: center;
   font-weight: bold;
+}
+/* -----------------------------------------
+Tool tip
+------------------------------------------*/
+a.tooltip{
+    position:relative;
+}
+a.tooltip::before {
+    content: attr(data-tooltip) ;
+    font-size: 12px;
+    position:absolute;
+    z-index: 999;
+    white-space:nowrap;
+    bottom:9999px;
+    left: 0;
+    background:#000;
+    color:#e0e0e0;
+    padding:0px 7px;
+    line-height: 24px;
+    height: 24px;
+    opacity: 0;
+}
+a.tooltip:hover::before {
+    opacity: 1;
+    top:22px;
+}
+a.tooltip:hover::after {
+    content: "";
+    opacity: 1;
+    width: 0; 
+    height: 0; 
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-bottom: 5px solid black;
+    z-index: 999;
+    position:absolute;
+    white-space:nowrap;
+    top:17px;
+    left: 0px;
 }
 /* -----------------------------------------
 Tab layout

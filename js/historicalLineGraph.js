@@ -6,7 +6,7 @@
 */
 $(document).ready(function(){
 	$.ajax({
-		url : "http://130.149.221.196/bgp_webportal/includes/__historicalData.php",
+		url : "includes/__historicalData.php",
 		type : "GET",
 		success : function(data){
 			console.log(data);

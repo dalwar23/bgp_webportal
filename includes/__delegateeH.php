@@ -42,7 +42,7 @@ if ($result->num_rows > 0) {
         <tr class='theader'>
             <td>Serial</td>
             <td>AS Number</td>
-            <td>Frequency</td>
+            <td>Frequency&nbsp;&nbsp;<a href='#' class='tooltip' data-tooltip='Number of unique delegators'><img src='images/info.png' height='12px' width='12px'></a></td>
             <td>Country Code</td>
             <td>RIR</td>
             <td>AS Name</td>

@@ -32,7 +32,6 @@
     <meta name='author' content='dalwar014@gmail.com' >
     <meta name='copyright' content='dalwar hossain, www.inet.tu-berlin.de' >
     <link type="text/CSS" href="css/style.css" rel="stylesheet" media="all"/>
-    <link href="https://fonts.googleapis.com/css?family=Bree+Serif" rel="stylesheet">
   </head>
   <title>BGP| Prefix Delegation Data</title>
   <body>
@@ -62,12 +61,14 @@
                     echo"
                     <div class='prefix-info'>
                     <h2 class='header-highlight'>Prefix Info</h3><br>
-                    <h3>Prefix information for prefix [ $prefix ]</h5><br>
+                    <p>Prefix information for prefix:&nbsp;<strong>[ $prefix ]</strong></p>
+                    <p>Total number of results found:&nbsp;<strong>{$numRows}</strong></p><br>
                       <table align='center' border='1px solid black' width='100%' class='talign'>
                       <tr class='theader'>
                           <td>Timestamp</td>
                           <td>Delegator</td>
                           <td>Delegatee</td>
+                          <td>Relation</td>
                       </tr>
                   ";
                   $counter = 0;
@@ -79,6 +80,7 @@
                           <td>$row[dates]</td>
                           <td><a href='asInfoProcessor.php?asNumber={$row[delegator]}'>$row[delegator]</a></td>
                           <td><a href='asInfoProcessor.php?asNumber={$row[delegatee]}'>$row[delegatee]</a></td>
+                          <td>$row[as_rel]</td>
                         </tr>
                       ";
                     }
