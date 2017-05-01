@@ -39,7 +39,7 @@ if ($result->num_rows > 0) {
     // output data of each row
     echo"
         <tr class='theader'>
-            <td>Serial</td>
+            <td>Rank</td>
             <td>AS Number</td>
             <td>Frequency&nbsp;&nbsp;<a href='#' class='tooltip' data-tooltip='Number of unique delegators'><img src='images/info.png' height='12px' width='12px'></a></td>
             <td>Country Code</td>

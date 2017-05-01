@@ -81,7 +81,7 @@ $(document).ready(function(){
 						yAxes:[{
 							scaleLabel:{
 								display: true,
-								labelString: "num. of prefixes (thousand)"
+								labelString: "num. of prefixes"
 							}
 						}]
 					}

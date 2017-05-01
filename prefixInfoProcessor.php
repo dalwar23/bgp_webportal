@@ -94,7 +94,7 @@
                     echo "</div>";
                   }
                   else{
-                    echo "<strong>Requested prefix is not found. Please try with a valid prefix.</strong>";
+                    echo "<strong>Requested prefix is not delegated.</strong>";
                   }
             		}
             		else{

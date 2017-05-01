@@ -37,12 +37,12 @@
           </p>
           <div id="prefix-data">
             <div class="historical">
-              <h2>BGP Delegation Data Stream</h2>
+              <h2>Prefix Delegation Classes</h2>
               <h5>(Click on the color legends for filter)</h5>
               <canvas id="mycanvas-historical"></canvas>
             </div>
             <div class="current">
-              <h2>BGP Delegation Prefix Growth</h2>
+              <h2>Overall Prefix Delegations</h2>
               <h5>(Click on the color legends for filter)</h5>
               <canvas id="mycanvas-current"></canvas>
             </div>
@@ -69,7 +69,7 @@
             <div class="clear"></div>
             <!-- ******************************************** -->
             <div class="historical">
-              <h2>Top 20 Delegator AS</h2>
+              <h2>Top 20 Delegator ASes</h2>
               <br/>
               <div class="tab">
                 <a href="javascript:void(0)" class="tablinks" id="defaultOpen" onclick="openDelegator(event, 'delegator-2017')">Current</a>
@@ -83,7 +83,7 @@
               </div>
             </div>
             <div class="current">
-              <h2>Top 20 Delegatee AS</h2>
+              <h2>Top 20 Delegatee ASes</h2>
               <br/>
               <div class="tab">
                 <a href="javascript:void(0)" class="tablinks2" id="defaultOpen2" onclick="openDelegatee(event, 'delegatee-2017')">Current</a>
