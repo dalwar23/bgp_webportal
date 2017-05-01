@@ -17,6 +17,7 @@
     <meta name='author' content='dalwar014@gmail.com' >
     <meta name='copyright' content='dalwar hossain, www.inet.tu-berlin.de' >
     <link type="text/CSS" href="css/style.css" rel="stylesheet" media="all"/>
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon"/>
   </head>
   <title>BGP| Prefix Delegation Data</title>
   <body>
