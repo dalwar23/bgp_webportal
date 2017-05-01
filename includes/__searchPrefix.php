@@ -26,7 +26,7 @@
 			<form name="prefixQueryForm" method="POST" action="prefixInfoProcessor.php">
 				<table align="center" border="0" width="100%">
 					<tr>
-						<td align="center" colspan="2">Please enter a prefix (e.g. 1.2.3.4/8)</td>
+						<td align="center" colspan="2">Please enter a prefix (e.g. 12.38.3.0/24)</td>
 					</tr>
 					<tr>
 						<td align="right"><input type="text" name="prefix" maxlength="18" required="required" autocomplete="on" autofocus class="txtBox"></td>

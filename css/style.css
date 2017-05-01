@@ -102,6 +102,10 @@ Main Content
   width: 47%;
   padding: 10px;
 }
+#main-content #prefix-data .current img{
+  vertical-align: middle;
+  padding: 8px;
+}
 #main-content #prefix-data .leftQuery{
   float: left;
   height: auto;
@@ -216,8 +220,8 @@ a.tooltip:hover::before {
 a.tooltip:hover::after {
     content: "";
     opacity: 1;
-    width: 0; 
-    height: 0; 
+    width: 0;
+    height: 0;
     border-left: 5px solid transparent;
     border-right: 5px solid transparent;
     border-bottom: 5px solid black;

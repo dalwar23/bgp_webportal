@@ -95,9 +95,21 @@
                 <?php include('includes/__delegateeH.php');?>
               </div>
             </div>
+            <div class="clear"></div>
             <!-- ******************************************** -->
+            <hr width="96%">
+            <!-- ******************************************** -->
+            <div class="historical">
+              <p> To download raw files as ".gz" format please click on the icon</p><br>
+              <a href="delegations/" target="_blank"><img src="images/download.png"/></a>
+            </div>
+            <div class="current">
+              <p>Clone/Fork git repository (raw data processor), please click on the icon.&nbsp;<a href="https://github.com/dharif23/ipv4_pds" target="_blank"><img src="images/github-32.png"/></a></p>
+              <p>Clone/Fork git repository (database and website), please click on the icon.&nbsp;<a href="https://github.com/dharif23/bgp_webportal" target="_blank"><img src="images/github-32.png"/></a></p>
           </div>
           <div class="clear"></div>
+          <!-- ******************************************** -->
+          <hr width="96%">
         </div>
         <div id="footer">
           <?php include_once('includes/__footer.php');?>
@@ -108,39 +120,6 @@
 		<script type="text/javascript" src="js/Chart.min.js"></script>
 		<script type="text/javascript" src="js/historicalLineGraph.js"></script>
     <script type="text/javascript" src="js/currentLineGraph.js"></script>
-    <script>
-      function openDelegator(evt, type) {
-          var i, tabcontent, tablinks;
-          tabcontent = document.getElementsByClassName("tabcontent");
-          for (i = 0; i < tabcontent.length; i++) {
-              tabcontent[i].style.display = "none";
-          }
-          tablinks = document.getElementsByClassName("tablinks");
-          for (i = 0; i < tablinks.length; i++) {
-              tablinks[i].className = tablinks[i].className.replace(" active", "");
-          }
-          document.getElementById(type).style.display = "block";
-          evt.currentTarget.className += " active";
-      }
-      // Get the element with id="defaultOpen" and click on it
-      document.getElementById("defaultOpen").click();
-    </script>
-    <script>
-      function openDelegatee(evt, type) {
-          var i, tabcontent, tablinks;
-          tabcontent = document.getElementsByClassName("tabcontent2");
-          for (i = 0; i < tabcontent.length; i++) {
-              tabcontent[i].style.display = "none";
-          }
-          tablinks = document.getElementsByClassName("tablinks2");
-          for (i = 0; i < tablinks.length; i++) {
-              tablinks[i].className = tablinks[i].className.replace(" active", "");
-          }
-          document.getElementById(type).style.display = "block";
-          evt.currentTarget.className += " active";
-      }
-      // Get the element with id="defaultOpen" and click on it
-      document.getElementById("defaultOpen2").click();
-    </script>
+    <script type="text/javascript" src="js/tabCreator.js"></script>
   </body>
 </html>
