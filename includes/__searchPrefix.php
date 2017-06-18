@@ -8,7 +8,7 @@
 ?>
 <?php
 	//Start the output buffer
-	ob_start();	
+	ob_start();
 ?>
 <?php
 	//check the browser doesn't cache the page
@@ -23,7 +23,7 @@
 	</head>
 	<body>
 		<div class="prefixquery">
-			<form name="prefixQueryForm" method="POST" action="prefixInfoProcessor.php">
+			<form name="prefixQueryForm" method="POST" action="prefixMatch.php">
 				<table align="center" border="0" width="100%">
 					<tr>
 						<td align="center" colspan="2">Please enter a prefix (e.g. 12.38.3.0/24)</td>
