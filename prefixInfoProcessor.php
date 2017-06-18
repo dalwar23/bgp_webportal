@@ -48,60 +48,71 @@
               <a href="index.php"><img src="images/home.png">&nbsp;&nbsp;Home</a>
             </div>
             	<?php
-                if(isset($_GET['prefix'])){
-                  $prefix = $_GET['prefix'];
-                }
-                elseif(isset($_POST['prefixQuerySubmit'])){
-                  $prefix = $_POST['prefix'];
-                }
-            		if($prefix){
-            			$query = get_prefix_query($prefix);
-                  $result = mysqli_query($connection,$query);
-                  $numRows = mysqli_num_rows($result);
-                  if ($numRows > 0) {
-                    echo"
-                    <div class='prefix-info'>
-                    <h2 class='header-highlight'>Prefix Info</h3><br>
-                    <p>Prefix information for prefix:&nbsp;<strong>[ $prefix ]</strong></p>
-                    <p>Total number of results found:&nbsp;<strong>{$numRows}</strong></p><br>
-                      <table align='center' border='1px solid black' width='100%' class='talign'>
-                      <tr class='theader'>
-                          <td>Timestamp</td>
-                          <td>Delegator</td>
-                          <td>Delegatee</td>
-                          <td>Relation</td>
-                      </tr>
-                  ";
-                  $counter = 0;
-                  while($row = mysqli_fetch_assoc($result)){
-                    set_time_limit(0);
-                    if($counter < 50){
-                      echo "
-                        <tr>
-                          <td>$row[dates]</td>
-                          <td><a href='asInfoProcessor.php?asNumber={$row[delegator]}'>$row[delegator]</a></td>
-                          <td><a href='asInfoProcessor.php?asNumber={$row[delegatee]}'>$row[delegatee]</a></td>
-                          <td>$row[as_rel]</td>
-                        </tr>
-                      ";
-                    }
-                    $counter++;
-                    }
-                    echo "</table>";
-                    if($numRows > 50){
-                      echo "This is a <strong>partial view</strong> of the actual result.</span>";
-                    }
-                    echo "</div>";
-                  }
-                  else{
-                    echo "<strong>Requested prefix is not delegated.</strong>";
-                  }
-            		}
-            		else{
-            			// Show error message
-      						echo "<tr><td>Server could not understand the request. Please try again!";
-      						echo "<br/><br/><a href='index.php'>Back</a><tr><td>";
-            		}
+							# POST values
+							if(isset($_POST['prefixQuerySubmit'])){
+								$search = $_POST['prefix'];
+								$addressBlock = shell_exec("/usr/bin/python3 pyScripts/longestPrefixMatch.py $search");
+								if($addressBlock){
+									$prefix = trim($addressBlock);
+								}
+								else{
+									$prefix = '0.0.0.0';
+								}
+              }
+							# GET values
+							elseif(isset($_GET['prefix'])){
+								$prefix = $_GET['prefix'];
+								$search = $_GET['prefix'];
+              }
+							else{
+								echo "Server could not understand the request. Please try again!";
+							}
+							# Now check the variables and run query
+							if($search && $prefix){
+								$query = get_prefix_query($prefix);
+								try{
+									$result = mysqli_query($connection,$query);
+									$numRows = mysqli_num_rows($result);
+								}
+								catch (Exception $e){
+									echo ($e);
+								}
+								if($numRows > 0){
+									echo"<div class='prefix-info'>
+									<h2 class='header-highlight'>Prefix Info</h3><br>
+									<p>Searched prefix/address block : &nbsp;<strong>[ $search ]</strong></p>
+									<p>Matched longest delegated address block:&nbsp;<strong>[ $prefix ]</strong></p>
+									<p>Total number of results found:&nbsp;<strong>{$numRows}</strong></p><br>
+									<table align='center' border='1px solid black' width='100%' class='talign'>
+									<tr class='theader'>
+									<td>Timestamp</td>
+									<td>Delegator</td>
+									<td>Delegatee</td>
+									<td>Relation</td>
+									</tr>
+									";
+									while($row = mysqli_fetch_assoc($result)){
+										set_time_limit(0);
+										echo "<tr>
+										<td>$row[dates]</td>
+										<td><a href='asInfoProcessor.php?asNumber={$row[delegator]}'>$row[delegator]</a></td>
+										<td><a href='asInfoProcessor.php?asNumber={$row[delegatee]}'>$row[delegatee]</a></td>
+										<td>$row[as_rel]</td>
+										</tr>
+										";
+									}
+									echo "</table>";
+									echo "</div>";
+								}
+								else{
+									echo "<strong>Requested prefix is not delegated.</strong>";
+								}
+							}
+							else{
+								// Show error message
+								echo "<tr><td>Server could not understand the request. Please try again!";
+								echo "<br/><br/><a href='index.php'>Back</a><tr><td>";
+							}
             	?>
             	</div>
               <div class="business">

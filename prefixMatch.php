@@ -16,9 +16,14 @@ if(isset($_POST['prefix'])){
   $prefix = $_POST['prefix'];
 }
 $addressBlock = shell_exec("/usr/bin/python3 pyScripts/longestPrefixMatch.py $prefix");
-if ($addressBlock != None){
-  header("Location: prefixInfoProcessor.php?prefix=" . $addressBlock);
+// echo "$prefix -> $addressBlock";
+if ($addressBlock != 'None'){
+  header("Location: prefixInfoProcessor.php?prefix=urlencode($addressBlock)&search=urlencode($prefix)");
 }
+// else{
+// 	$addressBlock = '0.0.0.0';
+// 	header("Location: prefixInfoProcessor.php?prefix=" . $addressBlock);
+// }
 ?>
 <?php
 	//Flush Output Buffer

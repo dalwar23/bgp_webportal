@@ -23,10 +23,10 @@
 	</head>
 	<body>
 		<div class="prefixquery">
-			<form name="prefixQueryForm" method="POST" action="prefixMatch.php">
+			<form name="prefixQueryForm" method="POST" action="prefixInfoProcessor.php">
 				<table align="center" border="0" width="100%">
 					<tr>
-						<td align="center" colspan="2">Please enter a prefix (e.g. 12.38.3.0/24)</td>
+						<td align="center" colspan="2">Please enter a prefix/address block (e.g. 4.4.4.1 or 4.4.4.0/30)</td>
 					</tr>
 					<tr>
 						<td align="right"><input type="text" name="prefix" maxlength="18" required="required" autocomplete="on" autofocus class="txtBox"></td>

@@ -29,7 +29,7 @@ def __importPrefix(cnx, _ip):
         for row in result:
             #prefixList.append(row[0])
             _pt.insert(row[0],row[0])
-        _net = _pt.get_key(_ip)
+        _net = _pt.get(_ip)
         print (_net)
     except ValueError as e:
         return False
