@@ -66,20 +66,20 @@ function get_delegation_query($asNumber){
 }
 ?>
 <?php
-function get_prefix_query($prefix){
+function get_prefix_query($column_name, $prefix, $table_name){
 	$prefixQuery = "
 	SELECT
-	t_delegation_s1.time_stamp	AS dates,
-	t_delegation_s1.prefix_more	AS prefix_more,
-	t_delegation_s1.delegator	AS delegator,
-	t_delegation_s1.delegatee	AS delegatee,
-	t_delegation_s1.as_rel		AS as_rel
-	FROM t_delegation_s1
+	{$table_name}.time_stamp	AS dates,
+	{$table_name}.prefix_less	AS prefix_less,
+	{$table_name}.prefix_more	AS prefix_more,
+	{$table_name}.delegator	AS delegator,
+	{$table_name}.delegatee	AS delegatee,
+	{$table_name}.as_rel		AS as_rel
+	FROM {$table_name}
 	WHERE
-	t_delegation_s1.prefix_more ='{$prefix}'
+	{$table_name}.{$column_name} ='{$prefix}'
 	ORDER BY dates DESC
 	";
-
 	return $prefixQuery;
 }
 ?>

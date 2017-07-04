@@ -106,7 +106,7 @@
                       echo "
                         <tr>
                           <td>$row[dates]</td>
-                          <td><a href='prefixInfoProcessor.php?prefix={$row[prefix_more]}'>$row[prefix_more]</a></td>";
+                          <td><a href='prefixInfoProcessor.php?prefix={$row[prefix_more]}&column_name=prefix_more'>$row[prefix_more]</a></td>";
                           if($asNumber == $row[delegator]){
                             echo "<td>$row[delegator]</td>";
                           }
@@ -120,7 +120,7 @@
                             echo "<td><a href='asInfoProcessor.php?asNumber={$row[delegatee]}'>$row[delegatee]</a></td>";
                           }
                       echo"
-                          <td>$row[as_rel]</td>  
+                          <td>$row[as_rel]</td>
                         </tr>
                       ";
                   }

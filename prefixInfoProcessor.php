@@ -50,17 +50,21 @@
             	<?php
 							# POST values
 							if(isset($_POST['prefixQuerySubmit'])){
+								$table_name = "v_current_prefix";
 								$search = $_POST['prefix'];
-								$addressBlock = shell_exec("/usr/bin/python3 pyScripts/longestPrefixMatch.py $search");
-								if($addressBlock){
-									$prefix = trim($addressBlock);
+								$data = shell_exec("/usr/bin/python3 pyScripts/longestPrefixMatch.py $search");
+								if($data){
+									$cleanData = trim($data);
+									list($column_name, $prefix) = explode("|", $cleanData);
 								}
 								else{
 									$prefix = '0.0.0.0';
 								}
               }
 							# GET values
-							elseif(isset($_GET['prefix'])){
+							elseif(isset($_GET['prefix']) && isset($_GET['column_name'])){
+								$table_name = "t_delegation_s1";
+								$column_name = $_GET['column_name'];
 								$prefix = $_GET['prefix'];
 								$search = $_GET['prefix'];
               }
@@ -69,7 +73,7 @@
 							}
 							# Now check the variables and run query
 							if($search && $prefix){
-								$query = get_prefix_query($prefix);
+								$query = get_prefix_query($column_name, $prefix, $table_name);
 								try{
 									$result = mysqli_query($connection,$query);
 									$numRows = mysqli_num_rows($result);
@@ -86,18 +90,30 @@
 									<table align='center' border='1px solid black' width='100%' class='talign'>
 									<tr class='theader'>
 									<td>Timestamp</td>
+									<td>Prefix Less</td>
+									<td>Prefix More</td>
 									<td>Delegator</td>
 									<td>Delegatee</td>
-									<td>Relation</td>
+									<td>Relation</td>";
+									if(isset($_POST['prefixQuerySubmit'])){
+										echo "<td>Action</td>";
+									}
+									echo"
 									</tr>
 									";
 									while($row = mysqli_fetch_assoc($result)){
 										set_time_limit(0);
 										echo "<tr>
 										<td>$row[dates]</td>
+										<td><a href='prefixInfoProcessor.php?prefix={$row[prefix_less]}&column_name=prefix_less'>$row[prefix_less]</a></td>
+										<td><a href='prefixInfoProcessor.php?prefix={$row[prefix_more]}&column_name=prefix_more'>$row[prefix_more]</a></td>
 										<td><a href='asInfoProcessor.php?asNumber={$row[delegator]}'>$row[delegator]</a></td>
 										<td><a href='asInfoProcessor.php?asNumber={$row[delegatee]}'>$row[delegatee]</a></td>
-										<td>$row[as_rel]</td>
+										<td>$row[as_rel]</td>";
+										if(isset($_POST['prefixQuerySubmit'])){
+											echo "<td><a href='prefixInfoProcessor.php?prefix={$prefix}&column_name={$column_name}'>TimeSeries</a></td>";
+										}
+										echo"
 										</tr>
 										";
 									}
