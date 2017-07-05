@@ -86,7 +86,11 @@
 									<h2 class='header-highlight'>Prefix Info</h3><br>
 									<p>Searched prefix/address block : &nbsp;<strong>[ $search ]</strong></p>
 									<p>Matched longest delegated address block:&nbsp;<strong>[ $prefix ]</strong></p>
-									<p>Total number of results found:&nbsp;<strong>{$numRows}</strong></p><br>
+									<p>Total number of results found:&nbsp;<strong>{$numRows}</strong></p></br>";
+									if(isset($_POST['prefixQuerySubmit'])){
+										echo "Check [ <a href='prefixInfoProcessor.php?prefix={$prefix}&column_name={$column_name}'>TimeSeries</a> ]</br></br>";
+									}
+									echo"
 									<table align='center' border='1px solid black' width='100%' class='talign'>
 									<tr class='theader'>
 									<td>Timestamp</td>
@@ -94,11 +98,7 @@
 									<td>Prefix More</td>
 									<td>Delegator</td>
 									<td>Delegatee</td>
-									<td>Relation</td>";
-									if(isset($_POST['prefixQuerySubmit'])){
-										echo "<td>Action</td>";
-									}
-									echo"
+									<td>Relation</td>
 									</tr>
 									";
 									while($row = mysqli_fetch_assoc($result)){
@@ -109,11 +109,7 @@
 										<td><a href='prefixInfoProcessor.php?prefix={$row[prefix_more]}&column_name=prefix_more'>$row[prefix_more]</a></td>
 										<td><a href='asInfoProcessor.php?asNumber={$row[delegator]}'>$row[delegator]</a></td>
 										<td><a href='asInfoProcessor.php?asNumber={$row[delegatee]}'>$row[delegatee]</a></td>
-										<td>$row[as_rel]</td>";
-										if(isset($_POST['prefixQuerySubmit'])){
-											echo "<td><a href='prefixInfoProcessor.php?prefix={$prefix}&column_name={$column_name}'>TimeSeries</a></td>";
-										}
-										echo"
+										<td>$row[as_rel]</td>
 										</tr>
 										";
 									}
